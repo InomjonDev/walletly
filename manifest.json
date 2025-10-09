@@ -2,11 +2,11 @@
 	"name": "Walletly",
 	"short_name": "Walletly",
 	"description": "A personal finance tracker to manage income and expenses.",
-	"start_url": "./index.html",
+	"start_url": "/",
 	"display": "standalone",
-	"background_color": "#007aff",
-	"theme_color": "#007aff",
-	"orientation": "portrait-primary",
+	"background_color": "#002B36",
+	"theme_color": "#000000",
+	"orientation": "portrait",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
