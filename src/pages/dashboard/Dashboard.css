@@ -1,0 +1,205 @@
+.dashboard-container {
+	padding: 24px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.dashboard-title {
+	font-size: 32px;
+	font-weight: 700;
+	margin-bottom: 24px;
+}
+
+.dashboard-header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.show-chart-btn {
+	padding: 8px 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #333;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.show-chart-btn:hover {
+	background-color: #222;
+}
+
+.credit-card {
+	background: linear-gradient(135deg, #007aff, #00d4ff);
+	color: white;
+	border-radius: 18px;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 500px;
+	margin-bottom: 32px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+.card-header {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.card-balance {
+	font-size: 36px;
+	font-weight: 700;
+	margin: 16px 0;
+}
+
+.card-actions {
+	display: flex;
+	gap: 16px;
+}
+
+.card-actions button {
+	flex: 1;
+	padding: 12px 0;
+	border: none;
+	border-radius: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	transition: background-color 0.2s;
+}
+
+.income-btn {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #fff;
+}
+
+.income-btn:hover {
+	background-color: rgba(255, 255, 255, 0.35);
+}
+
+.expense-btn {
+	background-color: rgba(0, 0, 0, 0.2);
+	color: #fff;
+}
+
+.expense-btn:hover {
+	background-color: rgba(0, 0, 0, 0.35);
+}
+
+.category-summary {
+	margin-top: 40px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.recharts-legend-item-text {
+	color: #000 !important;
+}
+
+.dashboard-loading,
+.dashboard-error {
+	text-align: center;
+	font-size: 18px;
+	margin-top: 40px;
+}
+
+/* Responsive Media Queries */
+
+/* Tablets (up to 1024px) */
+@media (max-width: 1024px) {
+	.credit-card {
+		padding: 24px;
+		max-width: 400px;
+	}
+
+	.card-balance {
+		font-size: 28px;
+	}
+
+	.card-actions button {
+		font-size: 14px;
+		padding: 10px 0;
+	}
+
+	.dashboard-title {
+		font-size: 28px;
+	}
+}
+
+/* Small Tablets / Large Phones (up to 768px) */
+@media (max-width: 768px) {
+	.credit-card {
+		padding: 20px;
+		max-width: 350px;
+	}
+
+	.card-balance {
+		font-size: 24px;
+	}
+
+	.card-actions {
+		flex-direction: row;
+		gap: 12px;
+	}
+
+	.card-actions button {
+		width: 100%;
+	}
+
+	.dashboard-title {
+		font-size: 24px;
+	}
+
+	.show-chart-btn {
+		padding: 6px 12px;
+		font-size: 14px;
+	}
+}
+
+/* Mobile Phones (up to 480px) */
+@media (max-width: 480px) {
+	.credit-card {
+		padding: 16px;
+		max-width: 300px;
+	}
+
+	.card-balance {
+		font-size: 20px;
+	}
+
+	.card-header {
+		font-size: 16px;
+	}
+
+	.card-actions button {
+		padding: 8px 0;
+		font-size: 12px;
+	}
+
+	.dashboard-title {
+		font-size: 20px;
+	}
+
+	.show-chart-btn {
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+}

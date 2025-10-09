@@ -1,0 +1,84 @@
+.transaction-list {
+	width: 100%;
+	max-width: 600px;
+	margin-top: 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	font-family: 'Inter', sans-serif;
+}
+
+.transaction-list h2 {
+	font-size: 22px;
+	font-weight: 700;
+	color: #2c3e50;
+	text-align: left;
+}
+
+.no-transactions {
+	text-align: center;
+	color: #777;
+	font-size: 16px;
+}
+
+.transaction-items {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	max-height: 400px;
+	overflow-y: auto;
+	padding-right: 8px;
+}
+
+.transaction-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #f9f9f9;
+	padding: 12px 16px;
+	border-radius: 14px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	transition: all 0.2s ease;
+}
+
+.transaction-item:hover {
+	background: #fff;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.transaction-left {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.transaction-category {
+	font-weight: 600;
+	color: #4f9cff;
+}
+
+.transaction-note {
+	font-size: 14px;
+	color: #555;
+}
+
+.transaction-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 4px;
+}
+
+.transaction-amount {
+	font-weight: 700;
+	color: #2c3e50;
+}
+
+.transaction-item.expense .transaction-amount {
+	color: #e74c3c;
+}
+
+.transaction-date {
+	font-size: 12px;
+	color: #999;
+}
