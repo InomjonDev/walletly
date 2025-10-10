@@ -1,7 +1,7 @@
 import { ArrowDownCircle, ArrowUpCircle, ChartPie } from 'lucide-react'
 import { useState } from 'react'
 import CategoryPieChart from '../../components/category-pie-chart/CategoryPieChart'
-import Loader from '../../components/Loader/Loader'
+import Loader from '../../components/loader/Loader'
 import AddTransactionForm from '../../components/transaction-form/AddTransactionForm'
 import TransactionList from '../../components/transaction-list/TransactionList'
 import { useDashboardLogic } from '../../hooks/useDashboardLogic'
