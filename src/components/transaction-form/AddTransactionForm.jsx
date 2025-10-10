@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useGetCategoriesQuery } from '../store/api/categories/categories.api'
-import { useAddTransactionMutation } from '../store/api/transactions/transactions.api'
+import { useGetCategoriesQuery } from '../../store/api/categories/categories.api'
+import { useAddTransactionMutation } from '../../store/api/transactions/transactions.api'
 import './AddTransactionForm.css'
 
 export default function AddTransactionForm({

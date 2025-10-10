@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import {
 	useAddCategoryMutation,
 	useGetCategoriesQuery,
-} from '../store/api/categories/categories.api'
+} from '../../store/api/categories/categories.api'
 
 const defaultCategories = [
 	{ name: 'Food' },

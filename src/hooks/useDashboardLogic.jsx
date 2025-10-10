@@ -13,11 +13,12 @@ export function useDashboardLogic() {
 		useGetCategoriesQuery(undefined, { refetchOnFocus: true })
 
 	const [addTransaction] = useAddTransactionMutation()
+
 	const [formVisible, setFormVisible] = useState(false)
 	const [formData, setFormData] = useState({
 		type: 'income',
 		categoryId: '',
-		amount: 0,
+		amount: '',
 		description: '',
 	})
 	const [submitting, setSubmitting] = useState(false)
@@ -33,29 +34,23 @@ export function useDashboardLogic() {
 	const totalOutcome = useMemo(
 		() =>
 			transactions
-				.filter(t => t.type === 'outcome')
+				.filter(t => t.type === 'expense')
 				.reduce((acc, t) => acc + t.amount, 0),
 		[transactions]
 	)
 
-	const balance = totalIncome - totalOutcome
-
-	const categoryTotals = useMemo(
-		() =>
-			categories.map(cat => {
-				const catTransactions = transactions.filter(
-					t => t.categoryId === cat._id
-				)
-				const income = catTransactions
-					.filter(t => t.type === 'income')
-					.reduce((acc, t) => acc + t.amount, 0)
-				const outcome = catTransactions
-					.filter(t => t.type === 'outcome')
-					.reduce((acc, t) => acc + t.amount, 0)
-				return { name: cat.name, income, outcome }
-			}),
-		[categories, transactions]
+	const balance = useMemo(
+		() => totalIncome - totalOutcome,
+		[totalIncome, totalOutcome]
 	)
+
+	const categoryTotals = useMemo(() => {
+		return categories.map(cat => {
+			const catTransactions = transactions.filter(t => t.category === cat._id)
+			const total = catTransactions.reduce((acc, t) => acc + t.amount, 0)
+			return { name: cat.name, total }
+		})
+	}, [categories, transactions])
 
 	const handleFormChange = e => {
 		const { name, value } = e.target
@@ -79,11 +74,11 @@ export function useDashboardLogic() {
 			setFormData({
 				type: 'income',
 				categoryId: '',
-				amount: 0,
+				amount: '',
 				description: '',
 			})
 		} catch (err) {
-			console.error(err)
+			console.error('Transaction error:', err)
 		} finally {
 			setSubmitting(false)
 		}

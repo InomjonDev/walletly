@@ -1,62 +1,35 @@
-import { ChartPie } from 'lucide-react'
-import { useMemo, useState } from 'react'
-import AddTransactionForm from '../../components/AddTransactionForm'
-import CategoryPieChart from '../../components/CategoryPieChart'
-import TransactionList from '../../components/TransactionList'
-import { useGetCategoriesQuery } from '../../store/api/categories/categories.api'
-import { useGetTransactionsQuery } from '../../store/api/transactions/transactions.api'
+import { ArrowDownCircle, ArrowUpCircle, ChartPie } from 'lucide-react'
+import { useState } from 'react'
+import CategoryPieChart from '../../components/category-pie-chart/CategoryPieChart'
+import Loader from '../../components/Loader/Loader'
+import AddTransactionForm from '../../components/transaction-form/AddTransactionForm'
+import TransactionList from '../../components/transaction-list/TransactionList'
+import { useDashboardLogic } from '../../hooks/useDashboardLogic'
 import './Dashboard.css'
 
-const CATEGORY_COLORS = {
-	Income: '#488f31',
-	Food: '#a7c162',
-	Entertainment: '#fff59f',
-	Shopping: '#f49e5c',
-	Transport: '#c5d275',
-}
-
 export function Dashboard() {
-	const [formVisible, setFormVisible] = useState(false)
+	const {
+		transactions,
+		categories,
+		loadingTransactions,
+		loadingCategories,
+		formVisible,
+		setFormVisible,
+		totalIncome,
+		totalOutcome,
+		balance,
+		categoryTotals,
+	} = useDashboardLogic()
+
 	const [formType, setFormType] = useState('income')
 	const [chartVisible, setChartVisible] = useState(false)
 	const [chartRender, setChartRender] = useState(false)
 
-	const { data: transactions = [], isLoading: loadingTransactions } =
-		useGetTransactionsQuery(undefined, { refetchOnFocus: true })
+	if (loadingTransactions || loadingCategories) return <Loader />
 
-	const { data: categories = [], isLoading: loadingCategories } =
-		useGetCategoriesQuery(undefined, { refetchOnFocus: true })
-
-	const totalIncome = useMemo(
-		() =>
-			transactions
-				.filter(t => t.type === 'income')
-				.reduce((acc, t) => acc + t.amount, 0),
-		[transactions]
-	)
-
-	const totalOutcome = useMemo(
-		() =>
-			transactions
-				.filter(t => t.type === 'expense')
-				.reduce((acc, t) => acc + t.amount, 0),
-		[transactions]
-	)
-
-	const balance = totalIncome - totalOutcome
-
-	const pieData = useMemo(() => {
-		return categories
-			.map(cat => {
-				const catTransactions = transactions.filter(t => t.category === cat._id)
-				const total = catTransactions.reduce((acc, t) => acc + t.amount, 0)
-				return total > 0 ? { name: cat.name, value: total } : null
-			})
-			.filter(Boolean)
-	}, [categories, transactions])
-
-	if (loadingTransactions || loadingCategories)
-		return <div className='dashboard-loading'>Loading...</div>
+	const pieData = categoryTotals
+		.filter(cat => cat.total > 0)
+		.map(cat => ({ name: cat.name, value: cat.total }))
 
 	const openChart = () => {
 		setChartRender(true)
@@ -80,7 +53,7 @@ export function Dashboard() {
 			</div>
 
 			{formVisible && (
-				<div className={`modal-overlay show`}>
+				<div className='modal-overlay show'>
 					<div className='modal-content'>
 						<button
 							className='modal-close'
@@ -111,7 +84,8 @@ export function Dashboard() {
 							setFormType('income')
 						}}
 					>
-						<span>⬆</span> Income
+						<ArrowUpCircle />
+						Income
 					</button>
 					<button
 						className='expense-btn'
@@ -120,17 +94,14 @@ export function Dashboard() {
 							setFormType('expense')
 						}}
 					>
-						<span>⬇</span> Expense
+						<ArrowDownCircle />
+						Expense
 					</button>
 				</div>
 			</div>
 
-			{/* Pie Chart Modal */}
 			{chartRender && (
-				<CategoryPieChart
-					pieData={pieData}
-					onClose={() => setChartRender(false)}
-				/>
+				<CategoryPieChart pieData={pieData} onClose={closeChart} />
 			)}
 
 			<TransactionList transactions={transactions} categories={categories} />

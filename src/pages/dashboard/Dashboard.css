@@ -10,7 +10,6 @@
 .dashboard-title {
 	font-size: 32px;
 	font-weight: 700;
-	margin-bottom: 24px;
 }
 
 .dashboard-header {
@@ -18,7 +17,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 24px;
 }
 
 .show-chart-btn {
@@ -80,6 +78,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 12px;
 	font-size: 16px;
 	transition: background-color 0.2s;
 }
