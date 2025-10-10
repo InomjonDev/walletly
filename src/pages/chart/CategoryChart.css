@@ -1,0 +1,64 @@
+.chart-page-container {
+	min-height: 100vh;
+	background: #0f0f0f;
+	color: #f5f5f5;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 24px;
+	font-family: var(--font-roboto);
+}
+
+.chart-page-header {
+	width: 100%;
+	max-width: 900px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.chart-page-header h2 {
+	font-size: 26px;
+	font-weight: 700;
+	color: #e58e27;
+}
+
+.back-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 12px;
+	color: #fff;
+	background-color: #1f1f1f;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.back-btn:hover {
+	background-color: #2a2a2a;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.no-data {
+	font-size: 16px;
+	color: #aaa;
+	margin-top: 40px;
+	text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+	.chart-page-header h2 {
+		font-size: 22px;
+	}
+
+	.back-btn {
+		padding: 6px 8px;
+		border-radius: 10px;
+	}
+}

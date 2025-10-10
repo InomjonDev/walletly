@@ -3,9 +3,12 @@
 	flex-direction: column;
 	gap: 18px;
 	width: 100%;
-	max-width: 500px;
 	margin: 0 auto;
 	font-family: var(--font-roboto);
+	background: #121212;
+	padding: 24px;
+	border-radius: 20px;
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 	transition: all 0.3s ease;
 }
 
@@ -13,7 +16,7 @@
 	margin: 0 0 16px 0;
 	font-size: 22px;
 	font-weight: 700;
-	color: #2c3e50;
+	color: #f0f0f0;
 	text-align: center;
 }
 
@@ -26,27 +29,25 @@
 .input-group label {
 	font-size: 14px;
 	font-weight: 600;
-	color: #2c3e50;
+	color: #cccccc;
 }
 
 .transaction-form input,
-.transaction-form select,
-.transaction-form textarea {
+.transaction-form select {
 	padding: 12px 16px;
 	font-size: 15px;
 	border-radius: 10px;
-	border: 1px solid #e0e0e0;
+	border: 1px solid #2d2d2d;
 	outline: none;
-	background-color: #f9f9f9;
+	background-color: #1a1a1a;
+	color: #fff;
 	transition: all 0.3s ease;
 }
 
 .transaction-form input:focus,
-.transaction-form select:focus,
-.transaction-form textarea:focus {
-	border-color: #4f9cff;
-	background-color: #fff;
-	box-shadow: 0 4px 10px rgba(79, 156, 255, 0.2);
+.transaction-form select:focus {
+	border-color: #e58e27;
+	box-shadow: 0 0 10px rgba(229, 142, 39, 0.3);
 }
 
 .quick-amounts {
@@ -60,24 +61,23 @@
 	padding: 8px 10px;
 	font-size: 13px;
 	font-weight: 600;
-	border: 1px solid #dcdcdc;
+	border: 1px solid #2d2d2d;
 	border-radius: 8px;
-	background: #f4f4f4;
-	color: #333;
+	background: #1b1b1b;
+	color: #ddd;
 	cursor: pointer;
 	transition: all 0.25s ease;
 }
 
 .quick-amounts button:hover {
-	background: #1b2020;
+	background: #e58e27;
 	color: #fff;
-	border-color: #1b2020;
 	transform: translateY(-1px);
 }
 
 .transaction-form button {
 	padding: 14px;
-	background: #1b2020;
+	background: #e58e27;
 	color: #fff;
 	font-weight: 700;
 	border: none;
@@ -89,21 +89,21 @@
 
 .transaction-form button:hover {
 	transform: translateY(-2px);
+	background: #f0a63a;
 }
 
 .transaction-form button:disabled {
 	opacity: 0.6;
 	cursor: not-allowed;
 	transform: none;
-	box-shadow: 0 4px 12px rgba(31, 105, 255, 0.2);
 }
 
 .error-message {
-	color: #e74c3c;
+	color: #ff6b6b;
 	font-size: 14px;
 	text-align: center;
 	font-weight: 500;
-	background: #fcebea;
+	background: rgba(255, 107, 107, 0.1);
 	padding: 8px 12px;
 	border-radius: 12px;
 }
@@ -112,33 +112,15 @@
 	.transaction-form {
 		width: 90%;
 		gap: 14px;
-	}
-
-	.transaction-form input,
-	.transaction-form select {
-		font-size: 14px;
-		padding: 10px 12px;
-	}
-
-	.quick-amounts {
-		gap: 8px;
-	}
-
-	.quick-amounts button {
-		font-size: 12px;
-		padding: 7px 8px;
-	}
-
-	.transaction-form button {
-		font-size: 14px;
-		padding: 12px;
+		padding: 18px;
 	}
 }
 
 @media (max-width: 480px) {
 	.transaction-form {
-		padding: 16px;
 		gap: 12px;
+		padding: 16px;
+		width: 100%;
 	}
 
 	.input-group label {
@@ -147,12 +129,12 @@
 
 	.transaction-form input,
 	.transaction-form select {
-		font-size: 13px;
+		font-size: 14px;
 		padding: 8px 10px;
 	}
 
 	.quick-amounts button {
 		font-size: 12px;
-		padding: 6px 6px;
+		padding: 10px 1px;
 	}
 }

@@ -44,7 +44,6 @@ export default function AddTransactionForm({
 			setNote('')
 			setDate(new Date().toISOString().slice(0, 10))
 			setError('')
-
 			if (onClose) onClose()
 		} catch (err) {
 			setError(err?.data?.error || 'Something went wrong')

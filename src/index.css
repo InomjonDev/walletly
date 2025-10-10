@@ -1,27 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-	--bg: #f5f7fa;
-	/* --bg: #1a1a1a; */
-	--card-bg: #ffffff;
-	--text: #1a1a1a;
-	--text-muted: #888;
-	--border: #e5e5e5;
-	--button-bg: #0066ee;
-	--button-text: #fff;
-	--button-hover: #1054ac;
-	--font-roboto: 'Roboto', sans-serif;
-}
+	/* ===== CORE COLORS ===== */
+	--color-bg-light: #f8f9fa;
+	--color-bg-dark: #121212;
+	--color-bg-card: #1a1a1a;
+	--color-bg-input: #2a2a2a;
+	--color-bg-hover: #242424;
+	--color-bg-modal: #121212;
 
-.dark {
-	--bg: #1a1a1a;
-	--card-bg: #2a2a2a;
-	--text: #ffffff;
-	--text-muted: #aaa;
-	--border: #444;
-	--button-bg: #e58e27;
-	--button-text: #fff;
-	--button-hover: #ff9c3d;
+	/* ===== BRAND & ACCENT ===== */
+	--color-primary: #e58e27;
+	--color-primary-hover: #f0a63a;
+	--color-accent-blue: #4f9cff;
+	--color-accent-green: #2e7d32;
+	--color-accent-green-hover: #388e3c;
+	--color-accent-red: #c62828;
+	--color-accent-red-hover: #d32f2f;
+
+	/* ===== TEXT COLORS ===== */
+	--color-text-main: #ffffff;
+	--color-text-secondary: #cfcfcf;
+	--color-text-muted: #888;
+	--color-text-title: #f0f0f0;
+	--color-text-balance: #f2f2f2;
+
+	/* ===== BORDERS & SHADOWS ===== */
+	--color-border: #333;
+	--shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
+	--shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+	/* ===== STATUS COLORS ===== */
+	--color-success: #27ae60;
+	--color-error: #ff6b6b;
+	--color-error-bg: rgba(255, 107, 107, 0.1);
+
+	/* ===== TRANSPARENCY & MISC ===== */
+	--color-glass: rgba(0, 0, 0, 0.65);
+	--color-gray-translucent: #ccc3;
 }
 
 * {
@@ -34,7 +50,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Inter', sans-serif;
-	background-color: var(--bg);
+	background: #0f0f0f;
 	color: var(--color-text);
 	transition: all 0.3s ease;
 }

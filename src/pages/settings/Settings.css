@@ -1,0 +1,145 @@
+.settings-page {
+	min-height: 100vh;
+	background: #0f0f0f;
+	color: #fff;
+	padding: 24px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.settings-header {
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 32px;
+}
+
+.settings-header h2 {
+	font-size: 26px;
+	font-weight: 700;
+	color: #e58e27;
+}
+
+.back-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px;
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	background-color: #2a2a2a;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+	background-color: #3a3a3a;
+	transform: translateY(-1px);
+}
+
+.settings-content {
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.settings-section {
+	background: #1a1a1a;
+	border-radius: 18px;
+	padding: 24px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.settings-section h3 {
+	font-size: 18px;
+	color: #f0f0f0;
+	margin-bottom: 18px;
+	border-bottom: 1px solid #2f2f2f;
+	padding-bottom: 8px;
+}
+
+.settings-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 0;
+}
+
+.item-info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.item-info span {
+	font-weight: 600;
+	color: #fff;
+}
+
+.item-info p {
+	font-size: 14px;
+	color: #aaa;
+}
+
+.theme-toggle {
+	display: flex;
+	gap: 10px;
+}
+
+.theme-btn {
+	padding: 10px 12px;
+	border-radius: 12px;
+	border: none;
+	cursor: pointer;
+	background: #2a2a2a;
+	color: #fff;
+	transition: all 0.3s ease;
+}
+
+.theme-btn.light:hover {
+	background: #f0a63a;
+	color: #fff;
+}
+
+.theme-btn.dark:hover {
+	background: #e58e27;
+	color: #fff;
+}
+
+.logout-btn {
+	padding: 10px 16px;
+	background: #e74c3c;
+	color: #fff;
+	border: none;
+	border-radius: 10px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+	background: #ff6659;
+	transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+	.settings-section {
+		padding: 18px;
+	}
+
+	.settings-header h2 {
+		font-size: 22px;
+	}
+
+	.item-info p {
+		font-size: 13px;
+	}
+}

@@ -1,18 +1,20 @@
 .transaction-list {
 	width: 100%;
-	max-width: 600px;
+	max-width: 650px;
 	margin-top: 32px;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
 	font-family: 'Inter', sans-serif;
+	color: #e6e6e6;
 }
 
 .transaction-list h2 {
 	font-size: 22px;
 	font-weight: 700;
-	color: #2c3e50;
+	color: #f0f0f0;
 	text-align: left;
+	margin-bottom: 8px;
 }
 
 .no-transactions {
@@ -21,6 +23,7 @@
 	font-size: 16px;
 }
 
+/* ===== DARK MATTE STYLE ===== */
 .transaction-items {
 	display: flex;
 	flex-direction: column;
@@ -28,22 +31,34 @@
 	max-height: 400px;
 	overflow-y: auto;
 	padding-right: 8px;
+	scrollbar-width: thin;
+	scrollbar-color: #2a2a2a #0f0f0f;
+}
+
+.transaction-items::-webkit-scrollbar {
+	width: 6px;
+}
+
+.transaction-items::-webkit-scrollbar-thumb {
+	background-color: #2a2a2a;
+	border-radius: 6px;
 }
 
 .transaction-item {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background: #f9f9f9;
-	padding: 12px 16px;
-	border-radius: 14px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-	transition: all 0.2s ease;
+	background: #1a1a1a;
+	padding: 16px 20px;
+	border-radius: 18px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+	transition: all 0.3s ease;
 }
 
 .transaction-item:hover {
-	background: #fff;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	background: #222;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+	transform: translateY(-2px);
 }
 
 .transaction-left {
@@ -54,12 +69,13 @@
 
 .transaction-category {
 	font-weight: 600;
+	/* color: #e58e27; */
 	color: #4f9cff;
 }
 
 .transaction-note {
 	font-size: 14px;
-	color: #555;
+	color: #aaa;
 }
 
 .transaction-right {
@@ -71,7 +87,7 @@
 
 .transaction-amount {
 	font-weight: 700;
-	color: #2c3e50;
+	color: #27ae60;
 }
 
 .transaction-item.expense .transaction-amount {
@@ -80,5 +96,20 @@
 
 .transaction-date {
 	font-size: 12px;
-	color: #999;
+	color: #888;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+	.transaction-list h2 {
+		font-size: 20px;
+	}
+
+	.transaction-item {
+		padding: 12px 14px;
+	}
+
+	.transaction-note {
+		font-size: 13px;
+	}
 }
