@@ -22,6 +22,7 @@ export function Dashboard() {
 
 	const [formType, setFormType] = useState('income')
 	const [modalActive, setModalActive] = useState(false)
+	const [filter, setFilter] = useState('income')
 
 	if (loadingTransactions || loadingCategories) return <Loader />
 
@@ -43,6 +44,8 @@ export function Dashboard() {
 	const handleOverlayClick = e => {
 		if (e.target.classList.contains('modal-overlay')) closeModal()
 	}
+
+	const filteredTransactions = transactions.filter(t => t.type === filter)
 
 	return (
 		<div className='dashboard-container'>
@@ -90,7 +93,12 @@ export function Dashboard() {
 				)}
 			</div>
 
-			<TransactionList transactions={transactions} categories={categories} />
+			<TransactionList
+				transactions={filteredTransactions}
+				categories={categories}
+				filter={filter}
+				setFilter={setFilter}
+			/>
 		</div>
 	)
 }

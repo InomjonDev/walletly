@@ -1,9 +1,15 @@
 import { ChevronLeft, Moon, Sun } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { logout } from '../../firebase/auth'
 import './Settings.css'
 
 export function Settings() {
 	const navigate = useNavigate()
+
+	const handleLogout = async () => {
+		await logout()
+		navigate('/login')
+	}
 
 	return (
 		<div className='settings-page'>
@@ -40,7 +46,9 @@ export function Settings() {
 							<span>Logout</span>
 							<p>Sign out of your Walletly account</p>
 						</div>
-						<button className='logout-btn'>Logout</button>
+						<button className='logout-btn' onClick={handleLogout}>
+							Logout
+						</button>
 					</div>
 				</div>
 			</div>

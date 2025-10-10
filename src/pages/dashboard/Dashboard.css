@@ -184,3 +184,32 @@
 		max-width: 120px;
 	}
 }
+/* .filter-toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 24px;
+}
+
+.toggle-btn {
+	padding: 10px 24px;
+	border: 2px solid #333;
+	border-radius: 20px;
+	background: #1a1a1a;
+	color: #eee;
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+	background: #222;
+}
+
+.toggle-btn.active {
+	background: #e58e27;
+	color: #fff;
+	border-color: #e58e27;
+	transform: translateY(-2px);
+} */

@@ -17,13 +17,46 @@
 	margin-bottom: 8px;
 }
 
+/* ===== COMBINED FILTER TOGGLE ===== */
+.filter-toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #1a1a1a;
+	border: 2px solid #333;
+	border-radius: 30px;
+	overflow: hidden;
+	width: fit-content;
+	margin: 0 auto 24px;
+}
+
+.toggle-btn {
+	padding: 10px 28px;
+	border: none;
+	background: transparent;
+	color: #bbb;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 15px;
+	transition: background 0.3s ease, color 0.3s ease;
+}
+
+.toggle-btn:first-child {
+	border-right: 2px solid #333;
+}
+
+.toggle-btn.active {
+	background: #e58e27;
+	color: #fff;
+}
+
 .no-transactions {
 	text-align: center;
 	color: #777;
 	font-size: 16px;
 }
 
-/* ===== DARK MATTE STYLE ===== */
+/* ===== TRANSACTION ITEMS ===== */
 .transaction-items {
 	display: flex;
 	flex-direction: column;
@@ -46,30 +79,52 @@
 
 .transaction-item {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	background: #1a1a1a;
-	padding: 16px 20px;
 	border-radius: 18px;
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
 	transition: all 0.3s ease;
+	overflow: hidden;
+	height: 72px;
 }
 
 .transaction-item:hover {
 	background: #222;
 	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
-	transform: translateY(-2px);
 }
 
+/* ===== ICON BLOCK ===== */
+.transaction-icon-block {
+	width: 72px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: #fff;
+}
+
+.transaction-icon-block.income {
+	background: #1f5132;
+	color: #27ae60;
+}
+
+.transaction-icon-block.expense {
+	background: #5c1f1f;
+	color: #e74c3c;
+}
+
+/* ===== CONTENT ===== */
 .transaction-left {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
+	justify-content: center;
+	padding-left: 16px;
+	flex: 1;
 }
 
 .transaction-category {
 	font-weight: 600;
-	/* color: #e58e27; */
 	color: #4f9cff;
 }
 
@@ -82,6 +137,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
+	justify-content: center;
+	padding-right: 16px;
 	gap: 4px;
 }
 
@@ -104,11 +161,12 @@
 	.transaction-list h2 {
 		font-size: 20px;
 	}
-
 	.transaction-item {
-		padding: 12px 14px;
+		height: 64px;
 	}
-
+	.transaction-icon-block {
+		width: 64px;
+	}
 	.transaction-note {
 		font-size: 13px;
 	}
