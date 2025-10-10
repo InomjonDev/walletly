@@ -7,7 +7,7 @@ export default function AddTransactionForm({
 	onClose,
 	defaultType = 'income',
 }) {
-	const [amount, setAmount] = useState('')
+	const [amount, setAmount] = useState('1000')
 	const [type, setType] = useState(defaultType)
 	const [category, setCategory] = useState('')
 	const [note, setNote] = useState('')
@@ -38,7 +38,7 @@ export default function AddTransactionForm({
 				date,
 			}).unwrap()
 
-			setAmount('')
+			setAmount('1000')
 			setType('income')
 			setCategory('')
 			setNote('')
@@ -51,47 +51,70 @@ export default function AddTransactionForm({
 		}
 	}
 
+	const quickAmounts = [5000, 10000, 35000]
+
 	return (
 		<form className='transaction-form' onSubmit={handleSubmit}>
-			<h3>Add Transaction</h3>
+			<h3>{type === 'expense' ? 'Expense' : 'Income'}</h3>
 			{error && <div className='error-message'>{error}</div>}
 
-			<input
-				type='number'
-				placeholder='Amount'
-				value={amount}
-				onChange={e => setAmount(e.target.value)}
-				required
-			/>
+			<div className='input-group'>
+				<label>Amount</label>
+				<input
+					type='number'
+					value={amount}
+					onChange={e => setAmount(e.target.value)}
+					required
+				/>
+				<div className='quick-amounts'>
+					{quickAmounts.map(val => (
+						<button
+							type='button'
+							key={val}
+							onClick={() => setAmount(String(val))}
+						>
+							{val.toLocaleString('en-US')} UZS
+						</button>
+					))}
+				</div>
+			</div>
 
 			{type === 'expense' && (
-				<select
-					value={category}
-					onChange={e => setCategory(e.target.value)}
-					required
-				>
-					<option value=''>Select Category</option>
-					{categories?.map(cat => (
-						<option key={cat._id} value={cat._id}>
-							{cat.name}
-						</option>
-					))}
-				</select>
+				<div className='input-group'>
+					<label>Category</label>
+					<select
+						value={category}
+						onChange={e => setCategory(e.target.value)}
+						required
+					>
+						<option value=''>Select Category</option>
+						{categories?.map(cat => (
+							<option key={cat._id} value={cat._id}>
+								{cat.name}
+							</option>
+						))}
+					</select>
+				</div>
 			)}
 
-			<input
-				type='date'
-				value={date}
-				onChange={e => setDate(e.target.value)}
-				required
-			/>
+			<div className='input-group'>
+				<label>Date</label>
+				<input
+					type='date'
+					value={date}
+					onChange={e => setDate(e.target.value)}
+					required
+				/>
+			</div>
 
-			<input
-				type='text'
-				placeholder='Note (optional)'
-				value={note}
-				onChange={e => setNote(e.target.value)}
-			/>
+			<div className='input-group'>
+				<label>Note</label>
+				<input
+					type='text'
+					value={note}
+					onChange={e => setNote(e.target.value)}
+				/>
+			</div>
 
 			<button type='submit' disabled={isLoading}>
 				{isLoading ? 'Adding...' : 'Add Transaction'}

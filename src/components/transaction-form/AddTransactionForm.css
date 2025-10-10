@@ -1,14 +1,11 @@
-/* Modern AddTransactionForm Styles */
-
 .transaction-form {
-	/* background: #ffffff; */
 	display: flex;
 	flex-direction: column;
 	gap: 18px;
 	width: 100%;
 	max-width: 500px;
 	margin: 0 auto;
-	font-family: 'Inter', sans-serif;
+	font-family: var(--font-roboto);
 	transition: all 0.3s ease;
 }
 
@@ -20,17 +17,28 @@
 	text-align: center;
 }
 
+.input-group {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.input-group label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #2c3e50;
+}
+
 .transaction-form input,
 .transaction-form select,
 .transaction-form textarea {
 	padding: 12px 16px;
 	font-size: 15px;
-	border-radius: 12px;
+	border-radius: 10px;
 	border: 1px solid #e0e0e0;
 	outline: none;
 	background-color: #f9f9f9;
 	transition: all 0.3s ease;
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
 .transaction-form input:focus,
@@ -41,14 +49,35 @@
 	box-shadow: 0 4px 10px rgba(79, 156, 255, 0.2);
 }
 
-.transaction-form textarea {
-	resize: vertical;
-	min-height: 80px;
+.quick-amounts {
+	display: flex;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.quick-amounts button {
+	flex: 1;
+	padding: 8px 10px;
+	font-size: 13px;
+	font-weight: 600;
+	border: 1px solid #dcdcdc;
+	border-radius: 8px;
+	background: #f4f4f4;
+	color: #333;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+.quick-amounts button:hover {
+	background: #1b2020;
+	color: #fff;
+	border-color: #1b2020;
+	transform: translateY(-1px);
 }
 
 .transaction-form button {
 	padding: 14px;
-	background: linear-gradient(135deg, #4f9cff, #1d6ff2);
+	background: #1b2020;
 	color: #fff;
 	font-weight: 700;
 	border: none;
@@ -56,12 +85,9 @@
 	cursor: pointer;
 	font-size: 16px;
 	transition: all 0.3s ease;
-	box-shadow: 0 6px 15px rgba(31, 105, 255, 0.25);
 }
 
 .transaction-form button:hover {
-	background: linear-gradient(135deg, #1d6ff2, #4f9cff);
-	box-shadow: 0 8px 20px rgba(31, 105, 255, 0.35);
 	transform: translateY(-2px);
 }
 
@@ -82,48 +108,25 @@
 	border-radius: 12px;
 }
 
-/* Responsive Media Queries */
-
-/* Tablets */
-@media (max-width: 1024px) {
-	.transaction-form {
-		padding: 20px;
-		gap: 16px;
-	}
-
-	.transaction-form h3 {
-		font-size: 20px;
-	}
-
-	.transaction-form input,
-	.transaction-form select,
-	.transaction-form textarea {
-		padding: 10px 14px;
-		font-size: 14px;
-	}
-
-	.transaction-form button {
-		padding: 12px;
-		font-size: 15px;
-	}
-}
-
-/* Small Tablets / Large Phones */
 @media (max-width: 768px) {
 	.transaction-form {
 		width: 90%;
 		gap: 14px;
 	}
 
-	.transaction-form h3 {
-		font-size: 19px;
-	}
-
 	.transaction-form input,
-	.transaction-form select,
-	.transaction-form textarea {
+	.transaction-form select {
 		font-size: 14px;
 		padding: 10px 12px;
+	}
+
+	.quick-amounts {
+		gap: 8px;
+	}
+
+	.quick-amounts button {
+		font-size: 12px;
+		padding: 7px 8px;
 	}
 
 	.transaction-form button {
@@ -132,31 +135,24 @@
 	}
 }
 
-/* Mobile Phones */
 @media (max-width: 480px) {
 	.transaction-form {
-		width: 90%;
 		padding: 16px;
 		gap: 12px;
 	}
 
-	.transaction-form h3 {
-		font-size: 18px;
+	.input-group label {
+		font-size: 13px;
 	}
 
 	.transaction-form input,
-	.transaction-form select,
-	.transaction-form textarea {
+	.transaction-form select {
 		font-size: 13px;
 		padding: 8px 10px;
 	}
 
-	.transaction-form textarea {
-		min-height: 60px;
-	}
-
-	.transaction-form button {
-		font-size: 14px;
-		padding: 10px;
+	.quick-amounts button {
+		font-size: 12px;
+		padding: 6px 6px;
 	}
 }

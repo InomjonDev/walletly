@@ -7,7 +7,6 @@ import TransactionList from '../../components/transaction-list/TransactionList'
 import { useDashboardLogic } from '../../hooks/useDashboardLogic'
 import './Dashboard.css'
 
-// Git work
 export function Dashboard() {
 	const {
 		transactions,
@@ -25,6 +24,7 @@ export function Dashboard() {
 	const [formType, setFormType] = useState('income')
 	const [chartVisible, setChartVisible] = useState(false)
 	const [chartRender, setChartRender] = useState(false)
+	const [modalActive, setModalActive] = useState(false)
 
 	if (loadingTransactions || loadingCategories) return <Loader />
 
@@ -42,6 +42,23 @@ export function Dashboard() {
 		setTimeout(() => setChartRender(false), 300)
 	}
 
+	const openModal = type => {
+		setFormType(type)
+		setFormVisible(true)
+		setTimeout(() => setModalActive(true), 10)
+	}
+
+	const closeModal = () => {
+		setModalActive(false)
+		setTimeout(() => setFormVisible(false), 400)
+	}
+
+	const handleOverlayClick = e => {
+		if (e.target.classList.contains('modal-overlay')) {
+			closeModal()
+		}
+	}
+
 	return (
 		<div className='dashboard-container'>
 			<div className='dashboard-header'>
@@ -54,18 +71,12 @@ export function Dashboard() {
 			</div>
 
 			{formVisible && (
-				<div className='modal-overlay show'>
-					<div className='modal-content'>
-						<button
-							className='modal-close'
-							onClick={() => setFormVisible(false)}
-						>
-							&times;
-						</button>
-						<AddTransactionForm
-							onClose={() => setFormVisible(false)}
-							defaultType={formType}
-						/>
+				<div
+					className={`modal-overlay ${modalActive ? 'show' : ''}`}
+					onClick={handleOverlayClick}
+				>
+					<div className={`modal-content ${modalActive ? 'animate' : ''}`}>
+						<AddTransactionForm onClose={closeModal} defaultType={formType} />
 					</div>
 				</div>
 			)}
@@ -78,23 +89,11 @@ export function Dashboard() {
 					{balance.toLocaleString('fr-FR').replace(/,/g, ' ')} UZS
 				</div>
 				<div className='card-actions'>
-					<button
-						className='income-btn'
-						onClick={() => {
-							setFormVisible(true)
-							setFormType('income')
-						}}
-					>
+					<button className='income-btn' onClick={() => openModal('income')}>
 						<ArrowUpCircle />
 						Income
 					</button>
-					<button
-						className='expense-btn'
-						onClick={() => {
-							setFormVisible(true)
-							setFormType('expense')
-						}}
-					>
+					<button className='expense-btn' onClick={() => openModal('expense')}>
 						<ArrowDownCircle />
 						Expense
 					</button>
