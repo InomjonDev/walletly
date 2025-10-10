@@ -7,6 +7,7 @@ import TransactionList from '../../components/transaction-list/TransactionList'
 import { useDashboardLogic } from '../../hooks/useDashboardLogic'
 import './Dashboard.css'
 
+// Git work
 export function Dashboard() {
 	const {
 		transactions,
