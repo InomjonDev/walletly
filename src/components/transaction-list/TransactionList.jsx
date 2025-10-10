@@ -47,8 +47,8 @@ export default function TransactionList({
 				<p className='no-transactions'>No transactions yet</p>
 			) : (
 				<div className='transaction-items'>
-					{transactions
-						.slice()
+					{[...transactions]
+						.sort((a, b) => new Date(b.date) - new Date(a.date))
 						.reverse()
 						.map(t => {
 							const category = categories.find(c => c._id === t.category) || {}
