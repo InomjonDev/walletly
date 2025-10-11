@@ -1,16 +1,56 @@
-# React + Vite
+# 💰 Walletly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Walletly** is a modern and intuitive money tracking application designed to help users manage their income and expenses efficiently. Built with **React**, **Node.js**, and **Firebase**, Walletly provides a clean UI, powerful analytics, and seamless Google authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- **Google Authentication** — Secure sign-in with Firebase Authentication  
+- **Dashboard Overview** — Real-time summary of total income, expenses, and balance  
+- **Transaction Management** — Add, view, and delete income or expense transactions  
+- **Category Visualization** — Interactive pie charts showing spending distribution by category  
+- **Dark & Light Themes**  
+  - Light: White background, ocean-blue UI  
+  - Dark (default): Elegant dark background with accent color `#e58e27`  
+- **Responsive Design** — Optimized for both desktop and mobile  
+- **Data Fetching with RTK Query** — Efficient API layer for transactions and categories  
+- **Deployment on Vercel** — Fast and reliable hosting platform
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🧩 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Frontend**
+- React (Vite)
+- Redux Toolkit & RTK Query
+- React Router DOM
+- Firebase Authentication
+- Lucide React Icons
+- CSS Modules
+
+**Backend**
+- Node.js
+- REST API architecture
+- MongoDB (assumed for data storage)
+
+**Other**
+- Yarn (package manager)
+- Vercel (deployment)
+
+---
+
+## 📊 Categories
+- Income
+-	Food
+-	Shopping
+-	Transport
+-	Health
+### Each category is visualized using unique icons and chart colors.
+
+---
+
+## 🧑‍💻 Author
+Inomjon Ismanaliyev
+Frontend Engineer | React Developer
+🚀 Building modern web apps with React, Node.js, and Firebase.
