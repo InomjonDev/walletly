@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root {
-	/* ===== CORE COLORS ===== */
-	--color-bg-light: #f8f9fa;
-	--color-bg-dark: #121212;
+:root.dark {
+	--color-bg: #121212;
 	--color-bg-card: #1a1a1a;
 	--color-bg-input: #2a2a2a;
 	--color-bg-hover: #242424;
 	--color-bg-modal: #121212;
 
-	/* ===== BRAND & ACCENT ===== */
 	--color-primary: #e58e27;
 	--color-primary-hover: #f0a63a;
 	--color-accent-blue: #4f9cff;
@@ -18,41 +15,80 @@
 	--color-accent-red: #c62828;
 	--color-accent-red-hover: #d32f2f;
 
-	/* ===== TEXT COLORS ===== */
+	--color-card-income-bg: #1f5132;
+	--color-card-expense-bg: #5c1f1f;
+
 	--color-text-main: #ffffff;
 	--color-text-secondary: #cfcfcf;
 	--color-text-muted: #888;
 	--color-text-title: #f0f0f0;
 	--color-text-balance: #f2f2f2;
+	--color-button-text: #ffffff;
 
-	/* ===== BORDERS & SHADOWS ===== */
 	--color-border: #333;
 	--shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
 	--shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
 
-	/* ===== STATUS COLORS ===== */
 	--color-success: #27ae60;
-	--color-error: #ff6b6b;
+	--color-error: #e74c3c;
 	--color-error-bg: rgba(255, 107, 107, 0.1);
 
-	/* ===== TRANSPARENCY & MISC ===== */
 	--color-glass: rgba(0, 0, 0, 0.65);
 	--color-gray-translucent: #ccc3;
+
+	--color-accent-black: #e58e27;
+}
+
+:root.light {
+	--color-bg: #f8f9fa;
+	--color-bg-card: #ffffff;
+	--color-bg-input: #f0f0f0;
+	--color-bg-hover: #e0e0e0;
+	--color-bg-modal: #ffffff;
+
+	--color-primary: #e58e27;
+	--color-primary-hover: #f0a63a;
+
+	--color-text-main: #222222;
+	--color-text-secondary: #555555;
+	--color-text-muted: #888888;
+	--color-text-title: #111111;
+	--color-button-text: #ffffff;
+
+	--color-border: #444;
+
+	--color-success: #27ae60;
+	--color-error: #e74c3c;
+
+	--color-primary: #e58e27;
+	--color-primary-hover: #f0a63a;
+	--color-accent-blue: #4f9cff;
+	--color-accent-green: #2e7d32;
+	--color-accent-green-hover: #388e3c;
+	--color-accent-red: #c62828;
+	--color-accent-red-hover: #d32f2f;
+	--color-accent-black: #333;
+
+	--color-card-income-bg: #23623b;
+	--color-card-expense-bg: #8b2727;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Inter', sans-serif;
-	background: #0f0f0f;
+	background: var(--color-bg-dark);
 	color: var(--color-text);
 	transition: all 0.3s ease;
+	scrollbar-width: thin;
+	scrollbar-color: #2a2a2a #0f0f0f;
 }
 
 .container {
@@ -83,4 +119,22 @@ body {
 	border-radius: 0.5rem;
 	padding: 1rem;
 	margin-bottom: 1rem;
+}
+
+.back-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 12px;
+	color: var(--color-text-main);
+	background-color: var(--color-bg-card);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn:hover {
+	background-color: var(--color-bg-input);
 }

@@ -6,13 +6,13 @@
 	flex-direction: column;
 	gap: 16px;
 	font-family: 'Inter', sans-serif;
-	color: #e6e6e6;
+	/* color: var(--color-text-muted); */
 }
 
 .transaction-list h2 {
 	font-size: 22px;
 	font-weight: 700;
-	color: #f0f0f0;
+	color: var(--color-text-main);
 	text-align: left;
 	margin-bottom: 8px;
 }
@@ -22,31 +22,33 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #1a1a1a;
-	border: 2px solid #333;
+	background: var(--color-bg-card);
+	border: 2px solid var(--color-border);
 	border-radius: 30px;
 	overflow: hidden;
-	width: fit-content;
+	/* width: fit-content; */
+	width: 100%;
 	margin: 0 auto 24px;
 }
 
 .toggle-btn {
-	padding: 10px 28px;
+	padding: 14px 32px;
 	border: none;
 	background: transparent;
-	color: #bbb;
+	color: var(--color-text-main);
 	cursor: pointer;
 	font-weight: 600;
 	font-size: 15px;
 	transition: background 0.3s ease, color 0.3s ease;
+	width: 100%;
 }
 
 .toggle-btn:first-child {
-	border-right: 2px solid #333;
+	border-right: 1px solid #333;
 }
 
 .toggle-btn.active {
-	background: #e58e27;
+	background: var(--color-accent-black);
 	color: #fff;
 }
 
@@ -61,11 +63,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	max-height: 400px;
 	overflow-y: auto;
 	padding-right: 8px;
-	scrollbar-width: thin;
-	scrollbar-color: #2a2a2a #0f0f0f;
 }
 
 .transaction-items::-webkit-scrollbar {
@@ -73,24 +72,25 @@
 }
 
 .transaction-items::-webkit-scrollbar-thumb {
-	background-color: #2a2a2a;
+	background-color: var(--color-bg-input);
 	border-radius: 6px;
 }
 
 .transaction-item {
 	display: flex;
 	align-items: center;
-	background: #1a1a1a;
+	background: var(--color-bg-card);
 	border-radius: 18px;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+	box-shadow: var(--shadow-card);
 	transition: all 0.3s ease;
 	overflow: hidden;
+	cursor: pointer;
 	height: 72px;
 }
 
 .transaction-item:hover {
-	background: #222;
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+	background: var(--color-bg-card);
+	box-shadow: var(--shadow-card-hover);
 }
 
 /* ===== ICON BLOCK ===== */
@@ -101,16 +101,16 @@
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
-	color: #fff;
+	color: var(--color-button-text);
 }
 
 .transaction-icon-block.income {
-	background: #1f5132;
+	background: var(--color-card-income-bg);
 	color: #27ae60;
 }
 
 .transaction-icon-block.expense {
-	background: #5c1f1f;
+	background: var(--color-card-expense-bg);
 	color: #e74c3c;
 }
 
@@ -131,6 +131,7 @@
 .transaction-note {
 	font-size: 14px;
 	color: #aaa;
+	text-transform: capitalize;
 }
 
 .transaction-right {

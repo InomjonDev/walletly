@@ -26,10 +26,6 @@ export function Dashboard() {
 
 	if (loadingTransactions || loadingCategories) return <Loader />
 
-	const pieData = categoryTotals
-		.filter(cat => cat.total > 0)
-		.map(cat => ({ name: cat.name, value: cat.total }))
-
 	const openModal = type => {
 		setFormType(type)
 		setFormVisible(true)
@@ -83,10 +79,10 @@ export function Dashboard() {
 				<button className='expense-btn' onClick={() => openModal('expense')}>
 					<ArrowDownLeft />
 				</button>
-				{pieData.length > 0 && (
+				{transactions.length > 0 && (
 					<button
 						className='chart-btn'
-						onClick={() => navigate('/category-chart', { state: { pieData } })}
+						onClick={() => navigate('/category-chart')}
 					>
 						<ChartPie />
 					</button>

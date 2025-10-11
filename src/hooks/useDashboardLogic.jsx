@@ -45,12 +45,15 @@ export function useDashboardLogic() {
 	)
 
 	const categoryTotals = useMemo(() => {
-		return categories.map(cat => {
-			const catTransactions = transactions.filter(t => t.category === cat._id)
-			const total = catTransactions.reduce((acc, t) => acc + t.amount, 0)
-			return { name: cat.name, total }
+		const totalsMap = {}
+		transactions.forEach(t => {
+			const category = categories.find(c => c._id === t.category)
+			const name = category?.name || (t.type === 'income' ? 'Income' : 'Other')
+			if (!totalsMap[name]) totalsMap[name] = 0
+			totalsMap[name] += t.amount
 		})
-	}, [categories, transactions])
+		return Object.entries(totalsMap).map(([name, total]) => ({ name, total }))
+	}, [transactions, categories])
 
 	const handleFormChange = e => {
 		const { name, value } = e.target
@@ -59,7 +62,12 @@ export function useDashboardLogic() {
 
 	const handleFormSubmit = async e => {
 		e.preventDefault()
-		if (!formData.amount || !formData.categoryId) return
+		if (
+			!formData.amount ||
+			!formData.categoryId ||
+			Number(formData.amount) <= 0
+		)
+			return
 		setSubmitting(true)
 		try {
 			await addTransaction({

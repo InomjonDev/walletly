@@ -7,7 +7,7 @@
 	align-items: center;
 	min-height: 100vh;
 	color: var(--color-text-main);
-	background: var(--color-bg-dark);
+	background: var(--color-bg);
 }
 
 /* ===== HEADER ===== */
@@ -97,7 +97,7 @@
 	gap: 10px;
 	font-size: 16px;
 	transition: all 0.3s ease;
-	color: var(--color-text-main);
+	color: var(--color-button-text);
 }
 
 .income-btn {
@@ -184,32 +184,3 @@
 		max-width: 120px;
 	}
 }
-/* .filter-toggle {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 12px;
-	margin-bottom: 24px;
-}
-
-.toggle-btn {
-	padding: 10px 24px;
-	border: 2px solid #333;
-	border-radius: 20px;
-	background: #1a1a1a;
-	color: #eee;
-	cursor: pointer;
-	font-weight: 600;
-	transition: all 0.3s ease;
-}
-
-.toggle-btn:hover {
-	background: #222;
-}
-
-.toggle-btn.active {
-	background: #e58e27;
-	color: #fff;
-	border-color: #e58e27;
-	transform: translateY(-2px);
-} */

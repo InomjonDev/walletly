@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { CategoriesInitializer } from './components/category-initializer/CategoriesInitializer.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
+import { ThemeProvider } from './context/ThemeContext.jsx'
 import './index.css'
 import { store } from './store/store.js'
 
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')).render(
 			<Provider store={store}>
 				<AuthProvider>
 					<CategoriesInitializer />
-					<App />
+					<ThemeProvider>
+						<App />
+					</ThemeProvider>
 				</AuthProvider>
 			</Provider>
 		</BrowserRouter>

@@ -1,6 +1,6 @@
 .settings-page {
 	min-height: 100vh;
-	background: #0f0f0f;
+	background: var(--color-bg);
 	color: #fff;
 	padding: 24px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -22,25 +22,7 @@
 .settings-header h2 {
 	font-size: 26px;
 	font-weight: 700;
-	color: #e58e27;
-}
-
-.back-btn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 8px;
-	border: none;
-	border-radius: 10px;
-	color: #fff;
-	background-color: #2a2a2a;
-	cursor: pointer;
-	transition: all 0.3s ease;
-}
-
-.back-btn:hover {
-	background-color: #3a3a3a;
-	transform: translateY(-1px);
+	color: var(--color-primary);
 }
 
 .settings-content {
@@ -52,15 +34,15 @@
 }
 
 .settings-section {
-	background: #1a1a1a;
+	background: var(--color-bg-card);
 	border-radius: 18px;
 	padding: 24px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+	box-shadow: var(--shadow-card);
 }
 
 .settings-section h3 {
 	font-size: 18px;
-	color: #f0f0f0;
+	color: var(--color-text-title);
 	margin-bottom: 18px;
 	border-bottom: 1px solid #2f2f2f;
 	padding-bottom: 8px;
@@ -81,12 +63,12 @@
 
 .item-info span {
 	font-weight: 600;
-	color: #fff;
+	color: var(--color-text-main);
 }
 
 .item-info p {
 	font-size: 14px;
-	color: #aaa;
+	color: var(--color-text-muted);
 }
 
 .theme-toggle {
@@ -99,28 +81,28 @@
 	border-radius: 12px;
 	border: none;
 	cursor: pointer;
-	background: #2a2a2a;
+	background: var(--color-bg-input);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
+	color: var(--color-text-main);
 	transition: all 0.3s ease;
 }
 
 .theme-btn.light:hover {
-	background: #f0a63a;
-	color: #fff;
+	background: var(--color-primary-hover);
+	color: var(--color-text-main);
 }
 
 .theme-btn.dark:hover {
-	background: #e58e27;
+	background: var(--color-primary-hover);
 	color: #fff;
 }
 
 .logout-btn {
 	padding: 10px 16px;
-	background: #e74c3c;
-	color: #fff;
+	background-color: var(--color-accent-red);
+	color: var(--color-button-text);
 	border: none;
 	border-radius: 10px;
 	font-weight: 600;
@@ -129,8 +111,37 @@
 }
 
 .logout-btn:hover {
-	background: #ff6659;
+	background: var(--color-accent-red-hover);
 	transform: translateY(-2px);
+}
+
+.download-btn {
+	padding: 10px 16px;
+	background: var(--color-accent-green);
+	color: #fff;
+	border: none;
+	border-radius: 10px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+	background: var(--color-accent-green-hover);
+	transform: translateY(-2px);
+}
+
+.theme-toggle .theme-btn {
+	opacity: 0.6;
+	transition: all 0.3s ease;
+}
+
+.theme-toggle .theme-btn.active {
+	opacity: 1;
+	transform: scale(1.05);
+	box-shadow: var(--shadow-card);
+	background-color: var(--color-primary);
+	color: #fff;
 }
 
 @media (max-width: 480px) {
