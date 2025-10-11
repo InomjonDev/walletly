@@ -19,8 +19,8 @@ export default function CategoryChartPage() {
 		setBgColor(rootStyles.getPropertyValue('--color-bg-card').trim())
 	}, [])
 
-	const filteredData = useMemo(() => {
-		if (transactions.length === 0) return []
+	const { filteredData, totalAmount } = useMemo(() => {
+		if (transactions.length === 0) return { filteredData: [], totalAmount: 0 }
 
 		const now = new Date()
 		const isSameDay = (d1, d2) =>
@@ -43,22 +43,36 @@ export default function CategoryChartPage() {
 		})
 
 		const categoryMap = {}
+		let total = 0
+
 		filtered.forEach(item => {
 			if (item.type === 'income') return
 			const categoryObj = categories.find(c => c._id === item.category)
 			const categoryName = categoryObj?.name || 'Other'
 			const amount = Number(item.amount) || 0
 			categoryMap[categoryName] = (categoryMap[categoryName] || 0) + amount
+			total += amount
 		})
 
-		return Object.entries(categoryMap).map(([name, value]) => ({
+		const data = Object.entries(categoryMap).map(([name, value]) => ({
 			id: name,
 			label: name,
 			value,
 		}))
+
+		return { filteredData: data, totalAmount: total }
 	}, [transactions, categories, filter])
 
 	if (loadingTransactions) return <Loader />
+
+	const filterLabel =
+		filter === 'daily'
+			? 'Today'
+			: filter === 'weekly'
+			? 'This Week'
+			: filter === 'monthly'
+			? 'This Month'
+			: 'All Time'
 
 	return (
 		<div className='chart-page-container'>
@@ -66,11 +80,14 @@ export default function CategoryChartPage() {
 				<button onClick={() => navigate(-1)} className='back-btn'>
 					<ChevronLeft />
 				</button>
-				<h2 className='chart-title'>Expense Breakdown</h2>
 			</div>
 
 			{filteredData.length > 0 ? (
 				<>
+					<div className='total-expense'>
+						Total Expense ({filterLabel}):{' '}
+						<span className='amount'>{totalAmount.toLocaleString()} UZS</span>
+					</div>
 					<div style={{ height: 450, width: '100%', maxWidth: 600 }}>
 						<ResponsivePie
 							data={filteredData}

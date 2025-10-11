@@ -27,6 +27,18 @@
 	font-weight: 600;
 }
 
+.total-expense {
+	font-size: 18px;
+	margin-bottom: 16px;
+	color: var(--color-text-main);
+	text-align: center;
+}
+
+.total-expense .amount {
+	font-weight: 600;
+	color: var(--color-accent, #4ea8de);
+}
+
 .no-data {
 	font-size: 16px;
 	color: var(--color-text-muted);
@@ -50,7 +62,6 @@
 	max-width: 600px;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
 	.chart-title {
 		font-size: 20px;
