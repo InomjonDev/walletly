@@ -1,8 +1,8 @@
 .settings-page {
 	min-height: 100vh;
+	width: 100%;
 	background: var(--color-bg);
 	color: #fff;
-	padding: 24px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 		sans-serif;
 	display: flex;
@@ -11,8 +11,6 @@
 }
 
 .settings-header {
-	width: 100%;
-	max-width: 800px;
 	display: flex;
 	align-items: center;
 	gap: 12px;
@@ -22,12 +20,12 @@
 .settings-header h2 {
 	font-size: 26px;
 	font-weight: 700;
-	color: var(--color-primary);
+	color: var(--color-text-title);
 }
 
 .settings-content {
 	width: 100%;
-	max-width: 800px;
+	/* max-width: 800px; */
 	display: flex;
 	flex-direction: column;
 	gap: 28px;

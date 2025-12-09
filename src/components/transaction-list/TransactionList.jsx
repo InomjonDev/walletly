@@ -1,33 +1,6 @@
-import {
-	Car,
-	CreditCard,
-	Heart,
-	Home,
-	ShoppingCart,
-	UtensilsCrossed,
-} from 'lucide-react'
+import * as Icons from 'lucide-react'
+import { categoryIcons } from '../../shared/categories.jsx'
 import './TransactionList.css'
-
-const categoryColors = {
-	Income: '#488f31',
-	Food: '#a7c162',
-	Entertainment: '#fff59f',
-	Shopping: '#f49e5c',
-	Transport: '#c5d275',
-	Health: '#f49e5c',
-	Home: '#4f9cff',
-	Other: '#888',
-}
-
-const categoryIcons = {
-	Food: <UtensilsCrossed size={24} />,
-	Shopping: <ShoppingCart size={24} />,
-	Transport: <Car size={24} />,
-	Health: <Heart size={24} />,
-	Income: <CreditCard size={24} />,
-	Home: <Home size={24} />,
-	Other: <CreditCard size={24} />,
-}
 
 export default function TransactionList({
 	transactions,
@@ -59,14 +32,37 @@ export default function TransactionList({
 			) : (
 				<div className='transaction-items'>
 					{transactions.map(t => {
-						const category = categories.find(c => c._id === t.category)
+						const category = categories?.find(
+							c =>
+								c._id === t.category ||
+								c._id === t.cat_id ||
+								c.cat_id === t.category ||
+								c.cat_id === t.cat_id
+						)
+
 						const categoryName =
-							category?.name || (t.type === 'income' ? 'Income' : 'Other')
-						const Icon = categoryIcons[categoryName] || <CreditCard size={24} />
+							t.name ||
+							category?.name ||
+							(t.type === 'income' ? 'Income' : 'Other')
+
+						let IconElement = null
+						if (t.cat_icon && Icons[t.cat_icon]) {
+							const C = Icons[t.cat_icon]
+							IconElement = <C size={24} />
+						} else if (category?.cat_icon && Icons[category.cat_icon]) {
+							const C = Icons[category.cat_icon]
+							IconElement = <C size={24} />
+						} else if (categoryIcons[categoryName]) {
+							IconElement = categoryIcons[categoryName]
+						} else {
+							IconElement = <Icons.CreditCard size={24} />
+						}
 
 						return (
 							<div key={t._id} className={`transaction-item ${t.type}`}>
-								<div className={`transaction-icon-block ${t.type}`}>{Icon}</div>
+								<div className={`transaction-icon-block ${t.type}`}>
+									{IconElement}
+								</div>
 								<div className='transaction-left'>
 									<span className='transaction-category'>{categoryName}</span>
 									<span className='transaction-note'>{t.notes}</span>

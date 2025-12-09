@@ -1,4 +1,6 @@
+import { X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { quickAmounts } from '../../shared/transaction-form'
 import { useGetCategoriesQuery } from '../../store/api/categories/categories.api'
 import { useAddTransactionMutation } from '../../store/api/transactions/transactions.api'
 import './AddTransactionForm.css'
@@ -22,6 +24,8 @@ export default function AddTransactionForm({
 	const { data: categories } = useGetCategoriesQuery()
 	const [addTransaction, { isLoading }] = useAddTransactionMutation()
 
+	const filteredCategories = categories?.filter(cat => cat.type === type) ?? []
+
 	const handleSubmit = async e => {
 		e.preventDefault()
 		if (!amount || (type === 'expense' && !category)) {
@@ -33,7 +37,7 @@ export default function AddTransactionForm({
 			await addTransaction({
 				amount: parseFloat(amount),
 				type,
-				category: type === 'expense' ? category : 'Income',
+				category: type === 'expense' ? category : category || 'Income',
 				notes: note,
 				date,
 			}).unwrap()
@@ -50,12 +54,26 @@ export default function AddTransactionForm({
 		}
 	}
 
-	const quickAmounts = [5000, 10000, 35000]
-
 	return (
 		<form className='transaction-form' onSubmit={handleSubmit}>
-			<h3>{type === 'expense' ? 'Expense' : 'Income'}</h3>
-			{error && <div className='error-message'>{error}</div>}
+			<div className='transaction-form-header'>
+				<h3>{type === 'expense' ? 'Expense' : 'Income'}</h3>
+				<button
+					type='button'
+					className='transaction-form-close-btn'
+					onClick={() => {
+						setAmount('1000')
+						setType('income')
+						setCategory('')
+						setNote('')
+						setDate(new Date().toISOString().slice(0, 10))
+						setError('')
+						if (onClose) onClose()
+					}}
+				>
+					<X />
+				</button>
+			</div>
 
 			<div className='input-group'>
 				<label>Amount</label>
@@ -78,23 +96,21 @@ export default function AddTransactionForm({
 				</div>
 			</div>
 
-			{type === 'expense' && (
-				<div className='input-group'>
-					<label>Category</label>
-					<select
-						value={category}
-						onChange={e => setCategory(e.target.value)}
-						required
-					>
-						<option value=''>Select Category</option>
-						{categories?.map(cat => (
-							<option key={cat._id} value={cat._id}>
-								{cat.name}
-							</option>
-						))}
-					</select>
-				</div>
-			)}
+			<div className='input-group'>
+				<label>Category</label>
+				<select
+					value={category}
+					onChange={e => setCategory(e.target.value)}
+					required={type === 'expense'}
+				>
+					<option value=''>Select Category</option>
+					{filteredCategories.map(cat => (
+						<option key={cat._id} value={cat._id}>
+							{cat.name}
+						</option>
+					))}
+				</select>
+			</div>
 
 			<div className='input-group'>
 				<label>Date</label>
@@ -115,7 +131,11 @@ export default function AddTransactionForm({
 				/>
 			</div>
 
-			<button type='submit' disabled={isLoading}>
+			<button
+				className='transaction-form-submit'
+				type='submit'
+				disabled={isLoading}
+			>
 				{isLoading ? 'Adding...' : 'Add Transaction'}
 			</button>
 		</form>

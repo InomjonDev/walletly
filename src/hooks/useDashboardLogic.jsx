@@ -7,10 +7,10 @@ import {
 
 export function useDashboardLogic() {
 	const { data: transactions = [], isLoading: loadingTransactions } =
-		useGetTransactionsQuery(undefined, { refetchOnFocus: true })
+		useGetTransactionsQuery(null, { refetchOnFocus: true })
 
 	const { data: categories = [], isLoading: loadingCategories } =
-		useGetCategoriesQuery(undefined, { refetchOnFocus: true })
+		useGetCategoriesQuery(null, { refetchOnFocus: true })
 
 	const [addTransaction] = useAddTransactionMutation()
 

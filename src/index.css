@@ -46,8 +46,10 @@
 	--color-bg-hover: #e0e0e0;
 	--color-bg-modal: #ffffff;
 
-	--color-primary: #e58e27;
-	--color-primary-hover: #f0a63a;
+	/* --color-primary: #e58e27; */
+
+	--color-primary-hover: #555;
+	--color-primary: #333;
 
 	--color-text-main: #222222;
 	--color-text-secondary: #555555;
@@ -60,8 +62,6 @@
 	--color-success: #27ae60;
 	--color-error: #e74c3c;
 
-	--color-primary: #e58e27;
-	--color-primary-hover: #f0a63a;
 	--color-accent-blue: #4f9cff;
 	--color-accent-green: #2e7d32;
 	--color-accent-green-hover: #388e3c;
@@ -78,6 +78,13 @@
 	padding: 0;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	background-color: var(--color-bg);
 }
 
 body {

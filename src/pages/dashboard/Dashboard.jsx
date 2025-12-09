@@ -79,6 +79,7 @@ export function Dashboard() {
 				<button className='expense-btn' onClick={() => openModal('expense')}>
 					<ArrowDownLeft />
 				</button>
+
 				{transactions.length > 0 && (
 					<button
 						className='chart-btn'

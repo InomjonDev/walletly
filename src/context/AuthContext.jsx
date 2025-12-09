@@ -7,7 +7,7 @@ import {
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth } from '../firebase/firebase.js'
 
-const AuthContext = createContext()
+export const AuthContext = createContext()
 
 export function useAuth() {
 	return useContext(AuthContext)
@@ -36,16 +36,11 @@ export function AuthProvider({ children }) {
 		return unsubscribe
 	}, [])
 
-	// Inside login()
 	const login = async () => {
-		console.log('🔵 Starting Google login')
 		const provider = new GoogleAuthProvider()
 		const result = await signInWithPopup(auth, provider)
-		console.log('🟢 Google login successful:', result.user)
 
 		const idToken = await result.user.getIdToken()
-		console.log('🟢 Retrieved token:', idToken)
-
 		setCurrentUser(result.user)
 		setToken(idToken)
 		localStorage.setItem('token', idToken)

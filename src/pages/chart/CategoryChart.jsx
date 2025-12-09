@@ -76,56 +76,61 @@ export default function CategoryChartPage() {
 
 	return (
 		<div className='chart-page-container'>
-			<div className='chart-page-header'>
-				<button onClick={() => navigate(-1)} className='back-btn'>
-					<ChevronLeft />
-				</button>
-			</div>
+			<div className='container'>
+				<div className='chart-page-header'>
+					<button onClick={() => navigate(-1)} className='back-btn'>
+						<ChevronLeft />
+					</button>
+					<h2>Monitoring</h2>
+				</div>
 
-			{filteredData.length > 0 ? (
-				<>
-					<div className='total-expense'>
-						Total Expense ({filterLabel}):{' '}
-						<span className='amount'>{totalAmount.toLocaleString()} UZS</span>
-					</div>
-					<div style={{ height: 450, width: '100%', maxWidth: 600 }}>
-						<ResponsivePie
-							data={filteredData}
-							margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-							innerRadius={0.6}
-							padAngle={1}
-							cornerRadius={4}
-							activeOuterRadiusOffset={10}
-							borderWidth={2}
-							borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
-							colors={{ scheme: 'set2' }}
-							arcLinkLabelsSkipAngle={10}
-							arcLinkLabelsTextColor={textColor}
-							arcLinkLabelsThickness={2}
-							arcLinkLabelsColor={{ from: 'color' }}
-							arcLabelsTextColor={textColor}
-							theme={{
-								tooltip: {
-									container: { background: bgColor, color: textColor },
-								},
-								labels: { text: { fill: textColor } },
-							}}
-						/>
-					</div>
-					<select
-						className='filter-select full-width'
-						value={filter}
-						onChange={e => setFilter(e.target.value)}
-					>
-						<option value='daily'>Daily</option>
-						<option value='weekly'>Weekly</option>
-						<option value='monthly'>Monthly</option>
-						<option value='full'>Full</option>
-					</select>
-				</>
-			) : (
-				<p className='no-data'>No category data available</p>
-			)}
+				{filteredData.length > 0 ? (
+					<>
+						<div className='total-expense'>
+							Total Expense ({filterLabel}):{' '}
+							<span className='amount'>{totalAmount.toLocaleString()} UZS</span>
+						</div>
+						<div className='chart-page-chart'>
+							<div style={{ height: 450, width: '100%' }}>
+								<ResponsivePie
+									data={filteredData}
+									margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+									innerRadius={0.6}
+									padAngle={1}
+									cornerRadius={4}
+									activeOuterRadiusOffset={10}
+									borderWidth={2}
+									borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
+									colors={{ scheme: 'set2' }}
+									arcLinkLabelsSkipAngle={10}
+									arcLinkLabelsTextColor={textColor}
+									arcLinkLabelsThickness={2}
+									arcLinkLabelsColor={{ from: 'color' }}
+									arcLabelsTextColor={textColor}
+									theme={{
+										tooltip: {
+											container: { background: bgColor, color: textColor },
+										},
+										labels: { text: { fill: textColor } },
+									}}
+								/>
+							</div>
+							<select
+								className='filter-select full-width'
+								value={filter}
+								onChange={e => setFilter(e.target.value)}
+							>
+								<option value='daily'>Daily</option>
+								<option value='weekly'>Weekly</option>
+								<option value='monthly'>Monthly</option>
+								<option value='full'>Full</option>
+							</select>
+						</div>
+					</>
+				) : (
+					<p className='no-data'>No category data available</p>
+				)}
+			</div>
 		</div>
 	)
 }

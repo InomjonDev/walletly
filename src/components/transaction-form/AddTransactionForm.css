@@ -1,21 +1,37 @@
 .transaction-form {
-	display: flex;
-	flex-direction: column;
 	gap: 18px;
 	width: 100%;
-	margin: 0 auto;
-	font-family: var(--font-roboto);
-	background: var(--color-bg);
 	padding: 24px;
-	border-radius: 20px;
-	box-shadow: var(--box-shadow);
+	display: flex;
+	margin: 0 auto;
+	border-radius: 17px;
+	flex-direction: column;
 	transition: all 0.3s ease;
+	background: var(--color-bg);
+	box-shadow: var(--box-shadow);
+	font-family: var(--font-roboto);
+
+	transform-origin: center;
+	animation: modalFadeScale 180ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+.transaction-form-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.transaction-form-close-btn {
+	display: flex;
+	background-color: transparent;
+	border: none;
+	color: var(--color-text-main);
+	cursor: pointer;
+	padding: 5px;
 }
 
 .transaction-form h3 {
-	margin: 0 0 16px 0;
 	font-size: 22px;
-	font-weight: 700;
+	font-weight: 500;
 	color: var(--color-text-main);
 	text-align: center;
 }
@@ -63,21 +79,21 @@
 	font-weight: 600;
 	border: 1px solid var(--color-border);
 	border-radius: 8px;
-	background: #1b1b1b;
+	background: var(--color-primary);
 	color: #ddd;
 	cursor: pointer;
 	transition: all 0.25s ease;
 }
 
 .quick-amounts button:hover {
-	background: #e58e27;
+	background: var(--color-primary-hover);
 	color: #fff;
 	transform: translateY(-1px);
 }
 
-.transaction-form button {
+.transaction-form-submit {
 	padding: 14px;
-	background: #e58e27;
+	background: var(--color-primary);
 	color: #fff;
 	font-weight: 700;
 	border: none;
@@ -87,12 +103,12 @@
 	transition: all 0.3s ease;
 }
 
-.transaction-form button:hover {
+.transaction-form-submit:hover {
 	transform: translateY(-2px);
-	background: #f0a63a;
+	background: var(--color-primary-hover);
 }
 
-.transaction-form button:disabled {
+.transaction-form-submit:disabled {
 	opacity: 0.6;
 	cursor: not-allowed;
 	transform: none;
@@ -121,8 +137,32 @@
 		gap: 12px;
 		padding: 16px;
 		width: 100%;
+		border-radius: 0px;
+		/* slide up on mobile */
+		animation: modalSlideUp 220ms cubic-bezier(0.22, 0.98, 0.3, 1) both;
 	}
 
+	@keyframes modalFadeScale {
+		from {
+			opacity: 0;
+			transform: translateY(-6px) scale(0.985);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes modalSlideUp {
+		from {
+			opacity: 0;
+			transform: translateY(120%);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 	.input-group label {
 		font-size: 13px;
 	}

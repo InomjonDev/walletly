@@ -166,6 +166,16 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
+	.modal-overlay,
+	.modal-content {
+		width: 100%;
+		padding: 0;
+		align-items: end;
+		justify-content: end;
+	}
+	.modal-content {
+		height: 450px;
+	}
 	.credit-card {
 		padding: 70px 16px;
 		max-width: 100%;
