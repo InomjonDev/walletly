@@ -145,3 +145,35 @@ body {
 .back-btn:hover {
 	background-color: var(--color-bg-input);
 }
+
+/* Animations */
+@keyframes modalSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(120%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes overlayFade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes modalFadeScale {
+	from {
+		opacity: 0;
+		transform: translateY(-6px) scale(0.985);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
