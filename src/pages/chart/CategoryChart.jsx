@@ -4,6 +4,12 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../../components/loader/Loader'
 import { useDashboardLogic } from '../../hooks/useDashboardLogic'
+import {
+	aggregateExpensesByCategory,
+	filterTransactionsByPeriod,
+	formatTotalAmount,
+	getFilterLabel,
+} from '../../utils/chart'
 import './CategoryChart.css'
 
 export default function CategoryChartPage() {
@@ -22,57 +28,14 @@ export default function CategoryChartPage() {
 	const { filteredData, totalAmount } = useMemo(() => {
 		if (transactions.length === 0) return { filteredData: [], totalAmount: 0 }
 
-		const now = new Date()
-		const isSameDay = (d1, d2) =>
-			d1.getFullYear() === d2.getFullYear() &&
-			d1.getMonth() === d2.getMonth() &&
-			d1.getDate() === d2.getDate()
-
-		const startOfWeek = new Date(now)
-		startOfWeek.setDate(now.getDate() - 7)
-
-		const startOfMonth = new Date(now)
-		startOfMonth.setMonth(now.getMonth() - 1)
-
-		const filtered = transactions.filter(item => {
-			const itemDate = new Date(item.createdAt)
-			if (filter === 'daily') return isSameDay(itemDate, now)
-			if (filter === 'weekly') return itemDate >= startOfWeek
-			if (filter === 'monthly') return itemDate >= startOfMonth
-			return true
-		})
-
-		const categoryMap = {}
-		let total = 0
-
-		filtered.forEach(item => {
-			if (item.type === 'income') return
-			const categoryObj = categories.find(c => c._id === item.category)
-			const categoryName = categoryObj?.name || 'Other'
-			const amount = Number(item.amount) || 0
-			categoryMap[categoryName] = (categoryMap[categoryName] || 0) + amount
-			total += amount
-		})
-
-		const data = Object.entries(categoryMap).map(([name, value]) => ({
-			id: name,
-			label: name,
-			value,
-		}))
-
+		const filtered = filterTransactionsByPeriod(transactions, filter)
+		const { data, total } = aggregateExpensesByCategory(filtered, categories)
 		return { filteredData: data, totalAmount: total }
 	}, [transactions, categories, filter])
 
 	if (loadingTransactions) return <Loader />
 
-	const filterLabel =
-		filter === 'daily'
-			? 'Today'
-			: filter === 'weekly'
-			? 'This Week'
-			: filter === 'monthly'
-			? 'This Month'
-			: 'All Time'
+	const filterLabel = getFilterLabel(filter)
 
 	return (
 		<div className='chart-page-container'>
@@ -88,7 +51,9 @@ export default function CategoryChartPage() {
 					<>
 						<div className='total-expense'>
 							Total Expense ({filterLabel}):{' '}
-							<span className='amount'>{totalAmount.toLocaleString()} UZS</span>
+							<span className='amount'>
+								{formatTotalAmount(totalAmount)} UZS
+							</span>
 						</div>
 						<div className='chart-page-chart'>
 							<div style={{ height: 450, width: '100%' }}>

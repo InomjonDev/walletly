@@ -1,58 +1,29 @@
 import { X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import useTransactionForm from '../../hooks/useTransactionForm'
 import { quickAmounts } from '../../shared/transaction-form'
-import { useGetCategoriesQuery } from '../../store/api/categories/categories.api'
-import { useAddTransactionMutation } from '../../store/api/transactions/transactions.api'
 import './AddTransactionForm.css'
 
 export default function AddTransactionForm({
 	onClose,
 	defaultType = 'income',
 }) {
-	const [amount, setAmount] = useState('1000')
-	const [type, setType] = useState(defaultType)
-	const [category, setCategory] = useState('')
-	const [note, setNote] = useState('')
-	const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
-	const [error, setError] = useState('')
-
-	useEffect(() => {
-		setType(defaultType)
-		if (defaultType === 'income') setCategory('')
-	}, [defaultType])
-
-	const { data: categories } = useGetCategoriesQuery()
-	const [addTransaction, { isLoading }] = useAddTransactionMutation()
-
-	const filteredCategories = categories?.filter(cat => cat.type === type) ?? []
-
-	const handleSubmit = async e => {
-		e.preventDefault()
-		if (!amount || (type === 'expense' && !category)) {
-			setError('Amount and category are required')
-			return
-		}
-
-		try {
-			await addTransaction({
-				amount: parseFloat(amount),
-				type,
-				category: type === 'expense' ? category : category || 'Income',
-				notes: note,
-				date,
-			}).unwrap()
-
-			setAmount('1000')
-			setType('income')
-			setCategory('')
-			setNote('')
-			setDate(new Date().toISOString().slice(0, 10))
-			setError('')
-			if (onClose) onClose()
-		} catch (err) {
-			setError(err?.data?.error || 'Something went wrong')
-		}
-	}
+	const {
+		amount,
+		setAmount,
+		type,
+		setType,
+		category,
+		setCategory,
+		note,
+		setNote,
+		date,
+		setDate,
+		error,
+		filteredCategories,
+		handleSubmit,
+		resetForm,
+		isLoading,
+	} = useTransactionForm({ defaultType, onClose })
 
 	return (
 		<form className='transaction-form' onSubmit={handleSubmit}>
@@ -62,12 +33,7 @@ export default function AddTransactionForm({
 					type='button'
 					className='transaction-form-close-btn'
 					onClick={() => {
-						setAmount('1000')
-						setType('income')
-						setCategory('')
-						setNote('')
-						setDate(new Date().toISOString().slice(0, 10))
-						setError('')
+						resetForm()
 						if (onClose) onClose()
 					}}
 				>

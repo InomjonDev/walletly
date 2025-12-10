@@ -9,9 +9,9 @@ import ProtectedRoute from './routes/ProtectedRoute'
 function App() {
 	return (
 		<Routes>
-			<Route path='/' element={<Login />} />
+			<Route path='/login' element={<Login />} />
 			<Route
-				path='/dashboard'
+				path='/'
 				element={
 					<ProtectedRoute>
 						<Dashboard />
@@ -19,7 +19,7 @@ function App() {
 				}
 			/>
 			<Route
-				path='/category-chart'
+				path='/analytics'
 				element={
 					<ProtectedRoute>
 						<CategoryChart />

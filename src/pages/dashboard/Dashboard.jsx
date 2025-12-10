@@ -4,7 +4,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../../components/loader/Loader'
 import AddTransactionForm from '../../components/transaction-form/AddTransactionForm'
 import TransactionList from '../../components/transaction-list/TransactionList'
+import Modal from '../../components/ui/Modal'
 import { useDashboardLogic } from '../../hooks/useDashboardLogic'
+import { formatAmount } from '../../utils/format'
 import './Dashboard.css'
 
 export function Dashboard() {
@@ -17,11 +19,9 @@ export function Dashboard() {
 		formVisible,
 		setFormVisible,
 		balance,
-		categoryTotals,
 	} = useDashboardLogic()
 
 	const [formType, setFormType] = useState('income')
-	const [modalActive, setModalActive] = useState(false)
 	const [filter, setFilter] = useState('income')
 
 	if (loadingTransactions || loadingCategories) return <Loader />
@@ -29,16 +29,10 @@ export function Dashboard() {
 	const openModal = type => {
 		setFormType(type)
 		setFormVisible(true)
-		setTimeout(() => setModalActive(true), 10)
 	}
 
 	const closeModal = () => {
-		setModalActive(false)
-		setTimeout(() => setFormVisible(false), 400)
-	}
-
-	const handleOverlayClick = e => {
-		if (e.target.classList.contains('modal-overlay')) closeModal()
+		setFormVisible(false)
 	}
 
 	const filteredTransactions = transactions.filter(t => t.type === filter)
@@ -54,22 +48,13 @@ export function Dashboard() {
 				</div>
 			</div>
 
-			{formVisible && (
-				<div
-					className={`modal-overlay ${modalActive ? 'show' : ''}`}
-					onClick={handleOverlayClick}
-				>
-					<div className={`modal-content ${modalActive ? 'animate' : ''}`}>
-						<AddTransactionForm onClose={closeModal} defaultType={formType} />
-					</div>
-				</div>
-			)}
+			<Modal isOpen={formVisible} onRequestClose={closeModal}>
+				<AddTransactionForm onClose={closeModal} defaultType={formType} />
+			</Modal>
 
 			<div className='credit-card'>
 				<div className='card-title'>Walletly</div>
-				<div className='card-balance'>
-					{balance.toLocaleString('fr-FR').replace(/,/g, ' ')} UZS
-				</div>
+				<div className='card-balance'>{formatAmount(balance)} UZS</div>
 			</div>
 
 			<div className='action-buttons'>
@@ -81,10 +66,7 @@ export function Dashboard() {
 				</button>
 
 				{transactions.length > 0 && (
-					<button
-						className='chart-btn'
-						onClick={() => navigate('/category-chart')}
-					>
+					<button className='chart-btn' onClick={() => navigate('/analytics')}>
 						<ChartPie />
 					</button>
 				)}

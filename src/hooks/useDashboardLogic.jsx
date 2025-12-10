@@ -105,7 +105,6 @@ export function useDashboardLogic() {
 		totalIncome,
 		totalOutcome,
 		balance,
-		categoryTotals,
 		handleFormChange,
 		handleFormSubmit,
 	}

@@ -1,0 +1,18 @@
+.settings-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 0;
+}
+.item-info span {
+	font-weight: 600;
+}
+.item-info p {
+	margin: 4px 0 0;
+	color: var(--color-text-muted);
+}
+.item-action {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}

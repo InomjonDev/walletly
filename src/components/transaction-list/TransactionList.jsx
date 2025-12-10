@@ -1,5 +1,7 @@
-import * as Icons from 'lucide-react'
 import { categoryIcons } from '../../shared/categories.jsx'
+import { findCategory, resolveCategoryName } from '../../utils/categories'
+import { formatAmount, formatDateTimeISO } from '../../utils/format'
+import { getIconComponentByName } from '../../utils/icons'
 import './TransactionList.css'
 
 export default function TransactionList({
@@ -8,6 +10,13 @@ export default function TransactionList({
 	filter,
 	setFilter,
 }) {
+	const sortedTransactions = (transactions || [])
+		.slice()
+		.sort(
+			(a, b) =>
+				new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+		)
+
 	return (
 		<div className='transaction-list'>
 			<h2>Latest Transactions</h2>
@@ -27,35 +36,30 @@ export default function TransactionList({
 				</button>
 			</div>
 
-			{transactions.length === 0 ? (
+			{sortedTransactions.length === 0 ? (
 				<p className='no-transactions'>No transactions yet</p>
 			) : (
 				<div className='transaction-items'>
-					{transactions.map(t => {
-						const category = categories?.find(
-							c =>
-								c._id === t.category ||
-								c._id === t.cat_id ||
-								c.cat_id === t.category ||
-								c.cat_id === t.cat_id
-						)
-
-						const categoryName =
-							t.name ||
-							category?.name ||
-							(t.type === 'income' ? 'Income' : 'Other')
+					{sortedTransactions.map(t => {
+						const category = findCategory(categories, t)
+						const categoryName = resolveCategoryName(category, t)
 
 						let IconElement = null
-						if (t.cat_icon && Icons[t.cat_icon]) {
-							const C = Icons[t.cat_icon]
-							IconElement = <C size={24} />
-						} else if (category?.cat_icon && Icons[category.cat_icon]) {
-							const C = Icons[category.cat_icon]
-							IconElement = <C size={24} />
+						const IconCompFromTransaction = t.cat_icon
+							? getIconComponentByName(t.cat_icon)
+							: null
+						const IconCompFromCategory = category?.cat_icon
+							? getIconComponentByName(category.cat_icon)
+							: null
+						if (t.cat_icon && IconCompFromTransaction) {
+							IconElement = <IconCompFromTransaction size={24} />
+						} else if (category?.cat_icon && IconCompFromCategory) {
+							IconElement = <IconCompFromCategory size={24} />
 						} else if (categoryIcons[categoryName]) {
 							IconElement = categoryIcons[categoryName]
 						} else {
-							IconElement = <Icons.CreditCard size={24} />
+							const Fallback = getIconComponentByName('CreditCard')
+							IconElement = <Fallback size={24} />
 						}
 
 						return (
@@ -69,18 +73,11 @@ export default function TransactionList({
 								</div>
 								<div className='transaction-right'>
 									<span className='transaction-amount'>
-										{t.type === 'expense' ? '-' : '+'}{' '}
-										{t.amount.toLocaleString('fr-FR').replace(/,/g, ' ')} UZS
+										{t.type === 'expense' ? '-' : '+'} {formatAmount(t.amount)}{' '}
+										UZS
 									</span>
 									<span className='transaction-date'>
-										{new Date(t.createdAt).toLocaleString('en-GB', {
-											day: '2-digit',
-											month: '2-digit',
-											year: 'numeric',
-											hour: '2-digit',
-											minute: '2-digit',
-											hour12: false,
-										})}
+										{formatDateTimeISO(t.createdAt)}
 									</span>
 								</div>
 							</div>
