@@ -98,10 +98,10 @@ body {
 	scrollbar-color: #2a2a2a #0f0f0f;
 
 	-webkit-touch-callout: none;
-	-webkit-user-select: none; /* Safari/Chrome */
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE/Edge */
-	user-select: none; /* Standard */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .container {

@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react'
-import { useGetCategoriesQuery } from '../store/api/categories/categories.api'
+import { useGetCategoriesQuery } from '@store/api/categories/categories.api'
 import {
 	useAddTransactionMutation,
 	useGetTransactionsQuery,
-} from '../store/api/transactions/transactions.api'
+} from '@store/api/transactions/transactions.api'
+import { useMemo, useState } from 'react'
 
 export function useDashboardLogic() {
 	const { data: transactions = [], isLoading: loadingTransactions } =

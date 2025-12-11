@@ -1,6 +1,6 @@
+import useTransactionForm from '@hooks/useTransactionForm'
+import { quickAmounts } from '@shared/transaction-form.shared'
 import { X } from 'lucide-react'
-import useTransactionForm from '../../hooks/useTransactionForm'
-import { quickAmounts } from '../../shared/transaction-form'
 import './AddTransactionForm.css'
 
 export default function AddTransactionForm({

@@ -1,11 +1,11 @@
+import SettingsItem from '@components/settings/SettingsItem'
+import { useGoBack } from '@hooks/useGoBack'
+import { useTheme } from '@hooks/useTheme'
+import { useGetTransactionsQuery } from '@store/api/transactions/transactions.api'
+import { downloadTransactionsExcel } from '@utils/user-data-download.utils'
 import { ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import SettingsItem from '../../components/settings/SettingsItem'
 import { logout } from '../../firebase/auth'
-import { useGoBack } from '../../hooks/useGoBack'
-import { useTheme } from '../../hooks/useTheme'
-import { useGetTransactionsQuery } from '../../store/api/transactions/transactions.api'
-import { downloadTransactionsExcel } from '../../utils/user-data-download'
 import './Settings.css'
 
 export function Settings() {
@@ -62,7 +62,7 @@ export function Settings() {
 						<SettingsItem
 							title='Custom Categories'
 							description='Create your own categories'
-							onClick={() => navigate('/settings/category')}
+							onClick={() => navigate('/settings/edit-categories')}
 							right={
 								<ChevronRight size={20} color={isDark ? '#fff' : '#000'} />
 							}

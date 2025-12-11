@@ -1,7 +1,10 @@
+import { AuthContext } from '@context/AuthContext'
+import { useAddCategoryMutation } from '@store/api/categories/categories.api'
+import {
+	buildCategoryPayload,
+	isValidCategoryName,
+} from '@utils/category.utils'
 import { useContext, useState } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import { useAddCategoryMutation } from '../store/api/categories/categories.api'
-import { buildCategoryPayload, isValidCategoryName } from '../utils/category'
 
 export default function useCustomCategoryForm({ onClose } = {}) {
 	const { currentUser } = useContext(AuthContext)

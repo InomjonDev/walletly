@@ -1,18 +1,18 @@
+import Loader from '@components/loader/Loader'
+import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { ResponsivePie } from '@nivo/pie'
-import { ChevronLeft } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Loader from '../../components/loader/Loader'
-import { useDashboardLogic } from '../../hooks/useDashboardLogic'
 import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,
 	formatTotalAmount,
 	getFilterLabel,
-} from '../../utils/chart'
-import './CategoryChart.css'
+} from '@utils/chart.utils'
+import { ChevronLeft } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Analytics.css'
 
-export default function CategoryChartPage() {
+export function Analytics() {
 	const navigate = useNavigate()
 	const { transactions, categories, loadingTransactions } = useDashboardLogic()
 	const [filter, setFilter] = useState('full')

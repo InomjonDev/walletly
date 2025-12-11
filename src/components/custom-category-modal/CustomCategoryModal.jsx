@@ -1,6 +1,6 @@
+import IconPicker from '@components/icon/IconPicker'
+import useCustomCategoryForm from '@hooks/useCustomCategoryForm'
 import * as LucideIcons from 'lucide-react'
-import useCustomCategoryForm from '../../hooks/useCustomCategoryForm'
-import IconPicker from '../icon/IconPicker'
 import './CustomCategoryModal.css'
 
 export default function CustomCategoryModal({ isOpen, onClose }) {

@@ -1,13 +1,14 @@
-import { ChevronLeft } from 'lucide-react'
-import { useState } from 'react'
-import CategoryCard from '../../../components/category-card/CategoryCard'
-import CustomCategoryModal from '../../../components/custom-category-modal/CustomCategoryModal'
-import { useGoBack } from '../../../hooks/useGoBack'
-import { useTheme } from '../../../hooks/useTheme'
+import CategoryCard from '@components/category-card/CategoryCard'
+import CustomCategoryModal from '@components/custom-category-modal/CustomCategoryModal'
+import { useEscape } from '@hooks/useEscape.hooks'
+import { useGoBack } from '@hooks/useGoBack'
+import { useTheme } from '@hooks/useTheme'
 import {
 	useDeleteCategoryMutation,
 	useGetCategoriesQuery,
-} from '../../../store/api/categories/categories.api'
+} from '@store/api/categories/categories.api'
+import { ChevronLeft } from 'lucide-react'
+import { useState } from 'react'
 import './Category.css'
 
 export function Category() {
@@ -16,6 +17,9 @@ export function Category() {
 	const goBack = useGoBack()
 
 	const [modalOpen, setModalOpen] = useState(false)
+	useEscape(() => {
+		if (modalOpen) closeModal()
+	})
 
 	const openCreate = () => setModalOpen(true)
 	const closeModal = () => setModalOpen(false)

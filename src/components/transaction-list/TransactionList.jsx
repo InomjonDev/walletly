@@ -1,7 +1,7 @@
-import { categoryIcons } from '../../shared/categories.jsx'
-import { findCategory, resolveCategoryName } from '../../utils/categories'
-import { formatAmount, formatDateTimeISO } from '../../utils/format'
-import { getIconComponentByName } from '../../utils/icons'
+import { categoryIcons } from '@shared/categories.shared.jsx'
+import { findCategory, resolveCategoryName } from '@utils/categories.utils'
+import { formatAmount, formatDateTimeISO } from '@utils/format.utils'
+import { getIconComponentByName } from '@utils/icons.utils'
 import './TransactionList.css'
 
 export default function TransactionList({

@@ -1,10 +1,10 @@
-import { useContext, useEffect } from 'react'
-import { AuthContext } from '../../context/AuthContext.jsx'
-import { SYSTEM_CATEGORIES } from '../../shared/categories.jsx'
+import { AuthContext } from '@context/AuthContext.jsx'
+import { SYSTEM_CATEGORIES } from '@shared/categories.shared.jsx'
 import {
 	useAddCategoryMutation,
 	useGetCategoriesQuery,
-} from '../../store/api/categories/categories.api'
+} from '@store/api/categories/categories.api'
+import { useContext, useEffect } from 'react'
 
 export function CategoriesInitializer() {
 	const { currentUser } = useContext(AuthContext)

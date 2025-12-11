@@ -1,5 +1,5 @@
+import { getIconComponentByName } from '@utils/icons.utils'
 import { X } from 'lucide-react'
-import { getIconComponentByName } from '../../utils/icons'
 
 export default function CategoryCard({ cat, onDelete }) {
 	const IconComp = cat?.cat_icon

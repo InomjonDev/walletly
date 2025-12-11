@@ -22,7 +22,6 @@ export const SYSTEM_CATEGORIES = [
 		type: 'expense',
 		cat_icon: 'ShoppingCart',
 	},
-	{ cat_id: 'bills', name: 'Bills', type: 'expense', cat_icon: 'Receipt' },
 ]
 
 export const categoryIcons = {

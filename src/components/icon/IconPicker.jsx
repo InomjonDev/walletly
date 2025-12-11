@@ -1,5 +1,5 @@
+import { ICON_CHOICES } from '@shared/categories.shared'
 import * as LucideIcons from 'lucide-react'
-import { ICON_CHOICES } from '../../shared/categories'
 import './IconPicker.css'
 
 export default function IconPicker({ value, onChange, search, setSearch }) {

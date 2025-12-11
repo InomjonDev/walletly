@@ -1,12 +1,12 @@
+import Loader from '@components/loader/Loader'
+import AddTransactionForm from '@components/transaction-form/AddTransactionForm'
+import TransactionList from '@components/transaction-list/TransactionList'
+import Modal from '@components/ui/Modal'
+import { useDashboardLogic } from '@hooks/useDashboardLogic'
+import { formatAmount } from '@utils/format.utils'
 import { ArrowDownLeft, ArrowUpRight, ChartPie, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Loader from '../../components/loader/Loader'
-import AddTransactionForm from '../../components/transaction-form/AddTransactionForm'
-import TransactionList from '../../components/transaction-list/TransactionList'
-import Modal from '../../components/ui/Modal'
-import { useDashboardLogic } from '../../hooks/useDashboardLogic'
-import { formatAmount } from '../../utils/format'
 import './Dashboard.css'
 
 export function Dashboard() {
