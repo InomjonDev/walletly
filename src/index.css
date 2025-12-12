@@ -23,7 +23,11 @@
 	--color-text-muted: #888;
 	--color-text-title: #f0f0f0;
 	--color-text-balance: #f2f2f2;
-	--color-button-text: #ffffff;
+
+	/* Button */
+	--color-button-bg: #151515;
+	--color-btn-text: #d4d4d4;
+	--color-button-bg-hover: #1c1c1c;
 
 	/* Custom input and select */
 	--color-label: #fafafa;
@@ -66,6 +70,11 @@
 	--color-bg-modal: #ffffff;
 
 	/* --color-primary: #e58e27; */
+
+	/* Button */
+	--color-button-bg: transparent;
+	--color-btn-text: #262626;
+	--color-button-bg-hover: #f5f5f5;
 
 	/* Custom input and select */
 	--color-label: #0a0a0a;
@@ -186,6 +195,16 @@ body {
 
 .back-btn:hover {
 	background-color: var(--color-bg-input);
+}
+
+.text-sm {
+	font-size: 0.875rem;
+	line-height: calc(1.25 / 0.875);
+	font-weight: 500;
+}
+
+.rounded-md {
+	border-radius: 0.375rem;
 }
 
 /* Animations */

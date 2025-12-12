@@ -16,6 +16,14 @@ export default function useCustomCategoryForm({ onClose } = {}) {
 	const [catIcon, setCatIcon] = useState('CreditCard')
 	const [iconSearch, setIconSearch] = useState('')
 
+	const reset = () => {
+		setName('')
+		setType('expense')
+		setCatIcon('CreditCard')
+		setIconSearch('')
+		setLoading(false)
+	}
+
 	const handleSave = async () => {
 		if (!isValidCategoryName(name)) {
 			return
@@ -30,6 +38,7 @@ export default function useCustomCategoryForm({ onClose } = {}) {
 			const payload = buildCategoryPayload({ name, type, catIcon })
 			await addCategory({ userId: currentUser.uid, ...payload }).unwrap()
 			onClose?.()
+			reset()
 		} catch (err) {
 			console.error('Failed to add category', err)
 		} finally {
@@ -48,5 +57,6 @@ export default function useCustomCategoryForm({ onClose } = {}) {
 		iconSearch,
 		setIconSearch,
 		handleSave,
+		reset,
 	}
 }

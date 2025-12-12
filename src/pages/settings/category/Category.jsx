@@ -24,14 +24,19 @@ export function Category() {
 	const openCreate = () => setModalOpen(true)
 	const closeModal = () => setModalOpen(false)
 
-	const [deleteCategoryApi] = useDeleteCategoryMutation()
+	const [deleteCategoryApi, { isLoading, isSuccess }] =
+		useDeleteCategoryMutation()
+	const [deletingId, setDeletingId] = useState(null)
 
 	const handleDelete = async id => {
 		if (!id) return
+		setDeletingId(id)
 		try {
 			await deleteCategoryApi(id).unwrap()
 		} catch (err) {
 			console.error('Delete failed', err)
+		} finally {
+			setDeletingId(null)
 		}
 	}
 
@@ -47,9 +52,10 @@ export function Category() {
 				<div className='categories-grid'>
 					{allCategories?.map(cat => (
 						<CategoryCard
-							key={cat?._id || cat?.id}
+							key={cat._id}
 							cat={cat}
 							onDelete={handleDelete}
+							deleteLoading={deletingId === (cat._id || cat.id)}
 						/>
 					))}
 				</div>

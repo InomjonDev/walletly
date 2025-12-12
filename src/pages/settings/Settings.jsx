@@ -25,7 +25,6 @@ export function Settings() {
 	return (
 		<div className={`settings-page ${theme}`}>
 			<div className='container'>
-				{' '}
 				<div className='settings-header'>
 					<button onClick={goBack} className='back-btn'>
 						<ChevronLeft size={22} />
@@ -75,7 +74,10 @@ export function Settings() {
 							title='Logout'
 							description='Sign out of your Walletly account'
 							right={
-								<button className='logout-btn' onClick={handleLogout}>
+								<button
+									className='logout-btn rounded-md text-sm'
+									onClick={handleLogout}
+								>
 									Logout
 								</button>
 							}
@@ -85,7 +87,10 @@ export function Settings() {
 							title='Download Data'
 							description='Download all your transactions to Excel'
 							right={
-								<button className='download-btn' onClick={handleDownload}>
+								<button
+									className='download-btn rounded-md text-sm'
+									onClick={handleDownload}
+								>
 									Download
 								</button>
 							}

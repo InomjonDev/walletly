@@ -15,6 +15,7 @@ export default function CustomCategoryModal({ isOpen, onClose }) {
 		iconSearch,
 		setIconSearch,
 		handleSave,
+		reset,
 	} = useCustomCategoryForm({ onClose })
 
 	if (!isOpen) return null
@@ -30,7 +31,6 @@ export default function CustomCategoryModal({ isOpen, onClose }) {
 				</div>
 
 				<Input
-					// label='Category name'
 					value={name}
 					onChange={setName}
 					placeholder='Enter category name'
@@ -56,7 +56,14 @@ export default function CustomCategoryModal({ isOpen, onClose }) {
 					<button onClick={handleSave} disabled={loading}>
 						{loading ? 'Saving...' : 'Save'}
 					</button>
-					<button onClick={onClose}>Cancel</button>
+					<button
+						onClick={() => {
+							reset()
+							onClose()
+						}}
+					>
+						Cancel
+					</button>
 				</div>
 			</div>
 		</div>

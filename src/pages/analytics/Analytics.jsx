@@ -1,6 +1,6 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { ResponsivePie } from '@nivo/pie'
-import { Loader } from '@ui/'
+import { Loader, Select } from '@ui/'
 import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,
@@ -80,16 +80,16 @@ export function Analytics() {
 									}}
 								/>
 							</div>
-							<select
-								className='filter-select full-width'
+							<Select
 								value={filter}
-								onChange={e => setFilter(e.target.value)}
-							>
-								<option value='daily'>Daily</option>
-								<option value='weekly'>Weekly</option>
-								<option value='monthly'>Monthly</option>
-								<option value='full'>Full</option>
-							</select>
+								onChange={setFilter}
+								options={[
+									{ label: 'Daily', value: 'daily' },
+									{ label: 'Weekly', value: 'weekly' },
+									{ label: 'Monthly', value: 'monthly' },
+									{ label: 'Full', value: 'full' },
+								]}
+							/>
 						</div>
 					</>
 				) : (

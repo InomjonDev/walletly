@@ -45,6 +45,7 @@
 	cursor: pointer;
 	transition: 0.2s ease;
 	position: relative;
+	max-height: 80px;
 }
 
 .category-card:hover {
@@ -64,6 +65,12 @@
 	display: flex;
 	align-items: center;
 	gap: 7px;
+}
+.category-name span {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .category-type {
