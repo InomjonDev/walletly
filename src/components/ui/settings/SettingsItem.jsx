@@ -1,6 +1,6 @@
 import './SettingsItem.css'
 
-export default function SettingsItem({ title, description, onClick, right }) {
+export function SettingsItem({ title, description, onClick, right }) {
 	return (
 		<div
 			className='settings-item'

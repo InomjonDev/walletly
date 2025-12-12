@@ -1,7 +1,7 @@
-import SettingsItem from '@components/settings/SettingsItem'
 import { useGoBack } from '@hooks/useGoBack'
 import { useTheme } from '@hooks/useTheme'
 import { useGetTransactionsQuery } from '@store/api/transactions/transactions.api'
+import { SettingsItem } from '@ui/'
 import { downloadTransactionsExcel } from '@utils/user-data-download.utils'
 import { ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'

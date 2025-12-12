@@ -4,7 +4,7 @@ import { formatAmount, formatDateTimeISO } from '@utils/format.utils'
 import { getIconComponentByName } from '@utils/icons.utils'
 import './TransactionList.css'
 
-export default function TransactionList({
+export function TransactionList({
 	transactions,
 	categories,
 	filter,

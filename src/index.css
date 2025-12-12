@@ -25,9 +25,28 @@
 	--color-text-balance: #f2f2f2;
 	--color-button-text: #ffffff;
 
+	/* Custom input and select */
+	--color-label: #fafafa;
+	--font-label: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+	--color-input-border-focus: 0 0 0 3px #454545;
+	--color-input-color: #fafafa;
+	--color-input-background: #151515;
+	--shadow-input-select-border: 0 0 0 1px #383838;
+
+	--color-select-chosen-text-color: #d4d4d4;
+	--color-select-dropdown-bg: #262626;
+	--color-select-dowpdown-hover-bg: #1c1c1c;
+	--color-select-option-hover-bg: #404040;
+
 	--color-border: #333;
 	--shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
 	--shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+	--shadow-color-accent-green: 0px 0px 15px 2px rgba(46, 125, 50, 0.4);
+	--shadow-color-accent-red: 0px 0px 15px 2px rgba(198, 40, 40, 0.4);
 
 	--color-success: #27ae60;
 	--color-error: #e74c3c;
@@ -47,6 +66,20 @@
 	--color-bg-modal: #ffffff;
 
 	/* --color-primary: #e58e27; */
+
+	/* Custom input and select */
+	--color-label: #0a0a0a;
+	--font-label: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+	--color-input-border-focus: 0 0 0 3px #e5e5e5;
+	--color-input-background: transparent;
+	--shadow-input-select-border: 0 0 0 1px #e5e5e5;
+
+	--color-select-chosen-text-color: #0000f;
+	--color-select-dropdown-bg: #fff;
+	--color-select-option-hover-bg: #f5f5f5;
 
 	--color-primary-hover: #555;
 	--color-primary: #333;
@@ -71,6 +104,9 @@
 
 	--color-card-income-bg: #23623b;
 	--color-card-expense-bg: #8b2727;
+
+	--shadow-color-accent-green: 0px 0px 15px 2px rgba(46, 125, 50, 0.4);
+	--shadow-color-accent-red: 0px 0px 15px 2px rgba(198, 40, 40, 0.4);
 }
 
 * {

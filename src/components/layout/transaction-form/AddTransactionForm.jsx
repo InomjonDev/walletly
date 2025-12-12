@@ -1,5 +1,6 @@
 import useTransactionForm from '@hooks/useTransactionForm'
 import { quickAmounts } from '@shared/transaction-form.shared'
+import { Input, Select } from '@ui/'
 import { X } from 'lucide-react'
 import './AddTransactionForm.css'
 
@@ -37,17 +38,17 @@ export default function AddTransactionForm({
 						if (onClose) onClose()
 					}}
 				>
-					<X />
+					<X size={18} />
 				</button>
 			</div>
 
 			<div className='input-group'>
-				<label>Amount</label>
-				<input
+				<Input
+					label='Amount (UZS)'
 					type='number'
 					value={amount}
-					onChange={e => setAmount(e.target.value)}
-					required
+					onChange={setAmount}
+					required='true'
 				/>
 				<div className='quick-amounts'>
 					{quickAmounts.map(val => (
@@ -63,37 +64,35 @@ export default function AddTransactionForm({
 			</div>
 
 			<div className='input-group'>
-				<label>Category</label>
-				<select
+				<Select
 					value={category}
-					onChange={e => setCategory(e.target.value)}
-					required={type === 'expense'}
-				>
-					<option value=''>Select Category</option>
-					{filteredCategories.map(cat => (
-						<option key={cat._id} value={cat._id}>
-							{cat.name}
-						</option>
-					))}
-				</select>
-			</div>
-
-			<div className='input-group'>
-				<label>Date</label>
-				<input
-					type='date'
-					value={date}
-					onChange={e => setDate(e.target.value)}
-					required
+					onChange={setCategory}
+					label='Category'
+					options={[
+						...filteredCategories.map(cat => ({
+							label: cat.name,
+							value: cat._id,
+						})),
+					]}
 				/>
 			</div>
 
 			<div className='input-group'>
-				<label>Note</label>
-				<input
-					type='text'
+				<Input
+					type='date'
+					label='Date'
+					value={date}
+					onChange={setDate}
+					required='true'
+				/>
+			</div>
+
+			<div className='input-group'>
+				<Input
 					value={note}
-					onChange={e => setNote(e.target.value)}
+					onChange={setNote}
+					label='Note'
+					placeholder='Note'
 				/>
 			</div>
 

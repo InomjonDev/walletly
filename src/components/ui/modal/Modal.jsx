@@ -2,7 +2,7 @@ import { useEscape } from '@/hooks/useEscape.hooks'
 import { useEffect, useState } from 'react'
 import './Modal.css'
 
-export default function Modal({ isOpen, onRequestClose, children }) {
+export function Modal({ isOpen, onRequestClose, children }) {
 	const [active, setActive] = useState(false)
 
 	useEscape(() => {

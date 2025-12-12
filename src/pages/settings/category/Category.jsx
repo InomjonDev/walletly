@@ -1,12 +1,12 @@
-import CategoryCard from '@components/category-card/CategoryCard'
-import CustomCategoryModal from '@components/custom-category-modal/CustomCategoryModal'
 import { useEscape } from '@hooks/useEscape.hooks'
 import { useGoBack } from '@hooks/useGoBack'
 import { useTheme } from '@hooks/useTheme'
+import CustomCategoryModal from '@layout/custom-category-modal/CustomCategoryModal'
 import {
 	useDeleteCategoryMutation,
 	useGetCategoriesQuery,
 } from '@store/api/categories/categories.api'
+import { CategoryCard } from '@ui/category-card/CategoryCard'
 import { ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
 import './Category.css'

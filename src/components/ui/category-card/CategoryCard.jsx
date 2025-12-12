@@ -1,7 +1,7 @@
 import { getIconComponentByName } from '@utils/icons.utils'
 import { X } from 'lucide-react'
 
-export default function CategoryCard({ cat, onDelete }) {
+export function CategoryCard({ cat, onDelete }) {
 	const IconComp = cat?.cat_icon
 		? getIconComponentByName(cat.cat_icon)
 		: getIconComponentByName('Circle')

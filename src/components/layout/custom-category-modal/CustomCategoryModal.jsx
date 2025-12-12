@@ -1,5 +1,5 @@
-import IconPicker from '@components/icon/IconPicker'
 import useCustomCategoryForm from '@hooks/useCustomCategoryForm'
+import { IconPicker, Input, Select } from '@ui/'
 import * as LucideIcons from 'lucide-react'
 import './CustomCategoryModal.css'
 
@@ -29,23 +29,22 @@ export default function CustomCategoryModal({ isOpen, onClose }) {
 					</button>
 				</div>
 
-				<input
-					className='category-modal-input'
-					placeholder='Category name'
+				<Input
+					// label='Category name'
 					value={name}
-					onChange={e => setName(e.target.value)}
+					onChange={setName}
+					placeholder='Enter category name'
 				/>
 
-				<select
-					className='category-modal-input'
+				<Select
 					value={type}
-					onChange={e => setType(e.target.value)}
-				>
-					<option value='expense'>Expense</option>
-					<option value='income'>Income</option>
-				</select>
+					onChange={setType}
+					options={[
+						{ label: 'Expense', value: 'expense' },
+						{ label: 'Income', value: 'income' },
+					]}
+				/>
 
-				<div className='icon-picker-label'>Choose icon</div>
 				<IconPicker
 					value={catIcon}
 					onChange={setCatIcon}

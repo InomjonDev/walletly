@@ -6,7 +6,7 @@ import {
 } from '@store/api/categories/categories.api'
 import { useContext, useEffect } from 'react'
 
-export function CategoriesInitializer() {
+export function CategoryInitializer() {
 	const { currentUser } = useContext(AuthContext)
 	const { data: categories, isLoading } = useGetCategoriesQuery()
 	const [addCategory] = useAddCategoryMutation()

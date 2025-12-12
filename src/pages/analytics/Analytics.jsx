@@ -1,6 +1,6 @@
-import Loader from '@components/loader/Loader'
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { ResponsivePie } from '@nivo/pie'
+import { Loader } from '@ui/'
 import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,

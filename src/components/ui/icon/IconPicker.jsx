@@ -1,19 +1,21 @@
 import { ICON_CHOICES } from '@shared/categories.shared'
+import { Input } from '@ui'
 import * as LucideIcons from 'lucide-react'
 import './IconPicker.css'
 
-export default function IconPicker({ value, onChange, search, setSearch }) {
+export function IconPicker({ value, onChange, search, setSearch }) {
 	const choices = ICON_CHOICES.filter(n =>
 		n.toLowerCase().includes((search || '').toLowerCase())
 	)
 	return (
-		<div>
-			<input
-				className='icon-search'
+		<div className='icon-picker-wrapper'>
+			<Input
+				label='Choose icon'
 				placeholder='Search for an icon'
 				value={search}
-				onChange={e => setSearch(e.target.value)}
+				onChange={setSearch}
 			/>
+
 			<div className='icon-picker'>
 				{choices.map(iconName => {
 					const I = LucideIcons[iconName] || LucideIcons.Circle

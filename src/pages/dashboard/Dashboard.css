@@ -32,7 +32,7 @@
 }
 
 .settings-btn {
-	padding: 8px 12px;
+	padding: 9px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -41,11 +41,19 @@
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
-	transition: background 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .settings-btn:hover {
 	background: rgba(255, 255, 255, 0.1);
+}
+
+.settings-btn svg {
+	transition: transform 0.2s ease;
+}
+
+.settings-btn:hover svg {
+	transform: rotate(87deg);
 }
 
 /* ===== MATTE DARK CARD ===== */
@@ -102,6 +110,7 @@
 
 .income-btn {
 	background: var(--color-accent-green);
+	box-shadow: var(--shadow-color-accent-green);
 }
 
 .income-btn:hover {
@@ -110,6 +119,7 @@
 
 .expense-btn {
 	background: var(--color-accent-red);
+	box-shadow: var(--shadow-color-accent-red);
 }
 
 .expense-btn:hover {
@@ -161,7 +171,6 @@
 }
 
 .modal-content.animate {
-	/* use keyframe animation from index.css (same as category modal) */
 	animation: modalFadeScale 180ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
 }
 
@@ -176,7 +185,6 @@
 	}
 	.modal-content {
 		height: 450px;
-		/* on mobile use slide-up animation (same as category modal) */
 	}
 	.modal-content.animate {
 		animation: modalSlideUp 220ms cubic-bezier(0.22, 0.98, 0.3, 1) both;
