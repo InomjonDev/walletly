@@ -1,4 +1,6 @@
 export { CategoryCard } from './category-card/CategoryCard'
+export { CreditCard } from './credit-card/CreditCard'
+export { GoBackButton } from './go-back-btn/GoBackButton'
 export { IconPicker } from './icon/IconPicker'
 export { Input } from './input/Input'
 export { Loader } from './loader/Loader'

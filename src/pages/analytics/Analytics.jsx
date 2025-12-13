@@ -1,6 +1,6 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { ResponsivePie } from '@nivo/pie'
-import { Loader, Select } from '@ui/'
+import { Select } from '@ui/'
 import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,
@@ -33,7 +33,7 @@ export function Analytics() {
 		return { filteredData: data, totalAmount: total }
 	}, [transactions, categories, filter])
 
-	if (loadingTransactions) return <Loader />
+	// if (loadingTransactions) return <Loader />
 
 	const filterLabel = getFilterLabel(filter)
 

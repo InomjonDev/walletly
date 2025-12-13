@@ -57,32 +57,6 @@
 }
 
 /* ===== MATTE DARK CARD ===== */
-.credit-card {
-	background: var(--color-bg-card);
-	border-radius: 24px;
-	padding: 100px 24px;
-	width: 100%;
-	max-width: 650px;
-	position: relative;
-	text-align: center;
-	box-shadow: var(--shadow-card);
-	margin-bottom: 40px;
-}
-
-.card-title {
-	position: absolute;
-	top: 20px;
-	left: 24px;
-	font-size: 20px;
-	font-weight: 700;
-	color: var(--color-text-secondary);
-}
-
-.card-balance {
-	font-size: 48px;
-	font-weight: 700;
-	color: var(--color-text-balance);
-}
 
 /* ===== ACTION BUTTONS ===== */
 .action-buttons {

@@ -1,7 +1,7 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
-import AddTransactionForm from '@layout/transaction-form/AddTransactionForm'
-import { Loader, Modal, TransactionList } from '@ui/'
-import { formatAmount } from '@utils/format.utils'
+import { AddTransactionForm } from '@layout/'
+import { CreditCardSkeleton } from '@skeletons/'
+import { CreditCard, Modal, TransactionList } from '@ui/'
 import { ArrowDownLeft, ArrowUpRight, ChartPie, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -17,12 +17,15 @@ export function Dashboard() {
 		formVisible,
 		setFormVisible,
 		balance,
+		loadingBalance,
 	} = useDashboardLogic()
 
 	const [formType, setFormType] = useState('income')
 	const [filter, setFilter] = useState('income')
 
-	if (loadingTransactions || loadingCategories) return <Loader />
+	const temporaryLoading = true
+
+	// if (loadingTransactions || loadingCategories) return <Loader />
 
 	const openModal = type => {
 		setFormType(type)
@@ -40,8 +43,8 @@ export function Dashboard() {
 			<div className='dashboard-header'>
 				<h2 className='header-text'>Hello, Inomjon</h2>
 				<div className='header-right'>
-					<Link to={'/settings'} className='settings-btn'>
-						<Settings />
+					<Link to={'/settings'} className=' back-btn'>
+						<Settings size={20} />
 					</Link>
 				</div>
 			</div>
@@ -50,10 +53,11 @@ export function Dashboard() {
 				<AddTransactionForm onClose={closeModal} defaultType={formType} />
 			</Modal>
 
-			<div className='credit-card'>
-				<div className='card-title'>Walletly</div>
-				<div className='card-balance'>{formatAmount(balance)} UZS</div>
-			</div>
+			{loadingTransactions || loadingCategories ? (
+				<CreditCardSkeleton />
+			) : (
+				<CreditCard title='Walletly' balance={balance} currency={'UZS'} />
+			)}
 
 			<div className='action-buttons'>
 				<button className='income-btn' onClick={() => openModal('income')}>

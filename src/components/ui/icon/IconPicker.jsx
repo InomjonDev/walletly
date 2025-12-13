@@ -27,7 +27,7 @@ export function IconPicker({ value, onChange, search, setSearch }) {
 							className={`icon-choice ${selected ? 'selected' : ''}`}
 							onClick={() => onChange(iconName)}
 						>
-							<I size={18} />
+							<I size={20} />
 						</button>
 					)
 				})}

@@ -25,13 +25,13 @@ export const SYSTEM_CATEGORIES = [
 ]
 
 export const categoryIcons = {
-	Food: <UtensilsCrossed size={24} />,
-	Shopping: <ShoppingCart size={24} />,
-	Transport: <Car size={24} />,
-	Health: <Heart size={24} />,
-	Income: <CreditCard size={24} />,
-	Home: <Home size={24} />,
-	Other: <CreditCard size={24} />,
+	Food: <UtensilsCrossed size={20} />,
+	Shopping: <ShoppingCart size={20} />,
+	Transport: <Car size={20} />,
+	Health: <Heart size={20} />,
+	Income: <CreditCard size={20} />,
+	Home: <Home size={20} />,
+	Other: <CreditCard size={20} />,
 }
 
 export const ICON_CHOICES = [

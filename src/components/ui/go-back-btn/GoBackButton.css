@@ -1,0 +1,17 @@
+.back-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 7px 8px;
+	border: none;
+	border-radius: 12px;
+	color: var(--color-text-main);
+	background-color: var(--color-input-background);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: var(--shadow-input-select-border);
+}
+
+.back-btn:hover {
+	background-color: var(--color-bg-input);
+}

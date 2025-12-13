@@ -1,5 +1,5 @@
 .spinner {
-	border: 2px solid #fff;
+	border: 2px solid var(--color-text-main);
 	border-bottom-color: transparent;
 	border-radius: 50%;
 	display: inline-block;

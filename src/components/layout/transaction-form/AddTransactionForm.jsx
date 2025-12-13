@@ -4,10 +4,7 @@ import { Input, Select } from '@ui/'
 import { X } from 'lucide-react'
 import './AddTransactionForm.css'
 
-export default function AddTransactionForm({
-	onClose,
-	defaultType = 'income',
-}) {
+export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 	const {
 		amount,
 		setAmount,
@@ -38,7 +35,7 @@ export default function AddTransactionForm({
 						if (onClose) onClose()
 					}}
 				>
-					<X size={18} />
+					<X size={20} />
 				</button>
 			</div>
 

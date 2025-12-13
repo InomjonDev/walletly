@@ -1,0 +1,39 @@
+.credit-card--skeleton {
+	overflow: hidden;
+}
+
+.skeleton-box {
+	background: var(--color-bg-skeleton);
+	border-radius: 8px;
+}
+
+.skeleton-title {
+	animation: var(--animation-pulse);
+	background-color: #404040;
+	position: absolute;
+	top: 20px;
+	left: 24px;
+	width: 120px;
+	height: 20px;
+	border-radius: 16px;
+}
+
+.skeleton-balance {
+	animation: var(--animation-pulse);
+	border-radius: 16px;
+	margin: 0 auto;
+	width: 220px;
+	height: 48px;
+	background-color: #404040;
+}
+
+@media (max-width: 480px) {
+	.skeleton-title {
+		left: 16px;
+	}
+
+	.skeleton-balance {
+		width: 180px;
+		height: 40px;
+	}
+}

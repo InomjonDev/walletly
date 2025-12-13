@@ -1,7 +1,7 @@
 import { useEscape } from '@hooks/useEscape.hooks'
 import { useGoBack } from '@hooks/useGoBack'
 import { useTheme } from '@hooks/useTheme'
-import CustomCategoryModal from '@layout/custom-category-modal/CustomCategoryModal'
+import { CustomCategoryModal } from '@layout/'
 import {
 	useDeleteCategoryMutation,
 	useGetCategoriesQuery,

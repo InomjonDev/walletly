@@ -3,7 +3,7 @@ import { IconPicker, Input, Select } from '@ui/'
 import * as LucideIcons from 'lucide-react'
 import './CustomCategoryModal.css'
 
-export default function CustomCategoryModal({ isOpen, onClose }) {
+export function CustomCategoryModal({ isOpen, onClose }) {
 	const {
 		loading,
 		name,

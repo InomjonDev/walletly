@@ -46,13 +46,6 @@
 	padding-bottom: 8px;
 }
 
-.settings-item {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 12px 0;
-}
-
 .item-info {
 	display: flex;
 	flex-direction: column;

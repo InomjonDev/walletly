@@ -18,6 +18,7 @@ export default defineConfig({
 			'@utils': path.resolve(__dirname, '/src/utils'),
 			'@ui': path.resolve(__dirname, '/src/components/ui'),
 			'@layout': path.resolve(__dirname, '/src/components/layout'),
+			'@skeletons': path.resolve(__dirname, '/src/components/skeletons'),
 		},
 	},
 })

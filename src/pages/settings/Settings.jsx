@@ -1,9 +1,9 @@
-import { useGoBack } from '@hooks/useGoBack'
 import { useTheme } from '@hooks/useTheme'
 import { useGetTransactionsQuery } from '@store/api/transactions/transactions.api'
-import { SettingsItem } from '@ui/'
+import { GoBackButton, SettingsItem } from '@ui/'
+
 import { downloadTransactionsExcel } from '@utils/user-data-download.utils'
-import { ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react'
+import { ChevronRight, Moon, Sun } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../../firebase/auth'
 import './Settings.css'
@@ -12,8 +12,6 @@ export function Settings() {
 	const navigate = useNavigate()
 	const { data: transactions = [] } = useGetTransactionsQuery()
 	const { theme, toggleTheme, isDark } = useTheme()
-
-	const goBack = useGoBack()
 
 	const handleLogout = async () => {
 		await logout()
@@ -26,9 +24,7 @@ export function Settings() {
 		<div className={`settings-page ${theme}`}>
 			<div className='container'>
 				<div className='settings-header'>
-					<button onClick={goBack} className='back-btn'>
-						<ChevronLeft size={22} />
-					</button>
+					<GoBackButton />
 					<h2>Settings</h2>
 				</div>
 				<div className='settings-content'>

@@ -19,7 +19,7 @@ export function CategoryCard({ cat, onDelete, deleteLoading }) {
 				</button>
 			)}
 			<div className='category-name'>
-				<IconComp size={18} />
+				<IconComp size={20} />
 				<span>{cat.name}</span>
 			</div>
 			<div className='category-type'>{cat.type}</div>

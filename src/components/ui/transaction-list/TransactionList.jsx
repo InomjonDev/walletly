@@ -52,14 +52,14 @@ export function TransactionList({
 							? getIconComponentByName(category.cat_icon)
 							: null
 						if (t.cat_icon && IconCompFromTransaction) {
-							IconElement = <IconCompFromTransaction size={24} />
+							IconElement = <IconCompFromTransaction size={20} />
 						} else if (category?.cat_icon && IconCompFromCategory) {
-							IconElement = <IconCompFromCategory size={24} />
+							IconElement = <IconCompFromCategory size={20} />
 						} else if (categoryIcons[categoryName]) {
 							IconElement = categoryIcons[categoryName]
 						} else {
 							const Fallback = getIconComponentByName('CreditCard')
-							IconElement = <Fallback size={24} />
+							IconElement = <Fallback size={20} />
 						}
 
 						return (
