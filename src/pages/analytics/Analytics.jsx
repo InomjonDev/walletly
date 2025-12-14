@@ -33,8 +33,6 @@ export function Analytics() {
 		return { filteredData: data, totalAmount: total }
 	}, [transactions, categories, filter])
 
-	// if (loadingTransactions) return <Loader />
-
 	const filterLabel = getFilterLabel(filter)
 
 	return (

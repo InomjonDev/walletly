@@ -62,6 +62,7 @@
 	--color-accent-black: #e58e27;
 
 	--animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	--skeleton-background: #f5f5f5;
 }
 
 :root.light {
@@ -85,10 +86,11 @@
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
 	--color-input-border-focus: 0 0 0 3px #e5e5e5;
+	--color-input-color: #a1a1a1;
 	--color-input-background: transparent;
 	--shadow-input-select-border: 0 0 0 1px #e5e5e5;
 
-	--color-select-chosen-text-color: #0000f;
+	--color-select-chosen-text-color: #0000;
 	--color-select-dropdown-bg: #fff;
 	--color-select-option-hover-bg: #f5f5f5;
 
@@ -120,6 +122,7 @@
 	--shadow-color-accent-red: 0px 0px 15px 2px rgba(198, 40, 40, 0.4);
 
 	--animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	--skeleton-background: #f5f5f5;
 }
 
 * {

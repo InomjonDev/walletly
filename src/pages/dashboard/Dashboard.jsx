@@ -17,15 +17,10 @@ export function Dashboard() {
 		formVisible,
 		setFormVisible,
 		balance,
-		loadingBalance,
 	} = useDashboardLogic()
 
 	const [formType, setFormType] = useState('income')
 	const [filter, setFilter] = useState('income')
-
-	const temporaryLoading = true
-
-	// if (loadingTransactions || loadingCategories) return <Loader />
 
 	const openModal = type => {
 		setFormType(type)
@@ -43,7 +38,7 @@ export function Dashboard() {
 			<div className='dashboard-header'>
 				<h2 className='header-text'>Hello, Inomjon</h2>
 				<div className='header-right'>
-					<Link to={'/settings'} className=' back-btn'>
+					<Link to='/settings' className='back-btn'>
 						<Settings size={20} />
 					</Link>
 				</div>
@@ -56,7 +51,7 @@ export function Dashboard() {
 			{loadingTransactions || loadingCategories ? (
 				<CreditCardSkeleton />
 			) : (
-				<CreditCard title='Walletly' balance={balance} currency={'UZS'} />
+				<CreditCard title='Walletly' balance={balance} currency='UZS' />
 			)}
 
 			<div className='action-buttons'>

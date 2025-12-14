@@ -9,7 +9,7 @@
 
 .skeleton-title {
 	animation: var(--animation-pulse);
-	background-color: #404040;
+	background-color: var(--skeleton-background);
 	position: absolute;
 	top: 20px;
 	left: 24px;
@@ -24,7 +24,7 @@
 	margin: 0 auto;
 	width: 220px;
 	height: 48px;
-	background-color: #404040;
+	background-color: var(--skeleton-background);
 }
 
 @media (max-width: 480px) {

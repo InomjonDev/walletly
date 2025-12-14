@@ -1,0 +1,76 @@
+.transactions-page {
+	min-height: 100vh;
+	width: 100%;
+	background: var(--color-bg);
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.transactions-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 32px;
+}
+
+.transactions-header h2 {
+	font-size: 26px;
+	font-weight: 700;
+	color: var(--color-text-title);
+}
+
+.transactions-content {
+	width: 100%;
+	/* max-width: 800px; */
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.transactions-list {
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+}
+
+.transactions-actions {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 13px;
+}
+
+.transactions-actions-checkboxes {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+}
+
+.transactions-total {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--color-text-main);
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+.transactions-total .amount {
+	color: #e74c3c;
+	font-weight: 700;
+}
+
+.transactions-total .amount.income {
+	color: #27ae60;
+}
+
+.transactions-total .amount.expense {
+	color: #e74c3c;
+}
+
+@media screen and (max-width: 480px) {
+	.transactions-actions {
+		flex-wrap: wrap;
+	}
+}

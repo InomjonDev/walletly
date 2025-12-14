@@ -21,7 +21,7 @@
 	border-radius: 10px;
 	border: none;
 	background: var(--color-input-background);
-	color: var(--color-select-chosen-text-color);
+	color: var(--color-input-color);
 	font-size: 14px;
 	box-sizing: border-box;
 	display: flex;
@@ -67,7 +67,7 @@
 	padding: 8px;
 	font-size: 13px;
 	font-weight: 400;
-	color: var(--color-text);
+	color: var(--color-text-main);
 	cursor: pointer;
 	border-radius: 7px;
 	transition: all 0.2s ease;
@@ -79,7 +79,8 @@
 
 .custom-select-option:hover {
 	background: var(--color-select-option-hover-bg);
-	color: var(--color-select-chosen-text-color);
+	/* color: var(--color-select-chosen-text-color); */
+	color: var(--color-text-main);
 }
 /* Only apply hover styles for devices that support hover */
 @media (hover: hover) and (pointer: fine) {

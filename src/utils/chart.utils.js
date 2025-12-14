@@ -69,3 +69,15 @@ export function formatTotalAmount(amount, locale = 'en-US') {
 		return String(amount)
 	}
 }
+
+export function calculateTotalExpenses(transactions = []) {
+	return transactions
+		.filter(t => t.type === 'expense')
+		.reduce((total, t) => total + (Number(t.amount) || 0), 0)
+}
+
+export function calculateTotalIncome(transactions = []) {
+	return transactions
+		.filter(t => t.type === 'income')
+		.reduce((total, t) => total + (Number(t.amount) || 0), 0)
+}
