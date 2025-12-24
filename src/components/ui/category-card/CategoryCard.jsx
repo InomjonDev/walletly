@@ -8,7 +8,7 @@ export function CategoryCard({ cat, onDelete, deleteLoading }) {
 		: getIconComponentByName('Circle')
 
 	return (
-		<div key={cat?._id || cat?.id} className='category-card system'>
+		<div className='category-card'>
 			{cat.userId && (
 				<button
 					type='button'
@@ -18,11 +18,15 @@ export function CategoryCard({ cat, onDelete, deleteLoading }) {
 					{deleteLoading ? <Spinner size={15} /> : <X size={14} />}
 				</button>
 			)}
-			<div className='category-name'>
-				<IconComp size={20} />
-				<span>{cat.name}</span>
+			<div className='category-card__content'>
+				<div
+					className='category-card__icon-wrapper'
+					style={{ backgroundColor: `${cat.color}` }}
+				>
+					<IconComp size={22} color={'#fff'} />
+				</div>
+				<span className='category-card__content-name'>{cat.name}</span>
 			</div>
-			<div className='category-type'>{cat.type}</div>
 		</div>
 	)
 }

@@ -45,7 +45,7 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 					type='number'
 					value={amount}
 					onChange={setAmount}
-					required='true'
+					required={true}
 				/>
 				<div className='quick-amounts'>
 					{quickAmounts.map(val => (
@@ -80,7 +80,7 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 					label='Date'
 					value={date}
 					onChange={setDate}
-					required='true'
+					required={true}
 				/>
 			</div>
 

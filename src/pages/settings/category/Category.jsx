@@ -6,9 +6,9 @@ import {
 	useDeleteCategoryMutation,
 	useGetCategoriesQuery,
 } from '@store/api/categories/categories.api'
-import { CategoryCard } from '@ui/category-card/CategoryCard'
+import { CategoryCard, FilterToggle } from '@ui/'
 import { ChevronLeft } from 'lucide-react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import './Category.css'
 
 export function Category() {
@@ -17,24 +17,25 @@ export function Category() {
 	const goBack = useGoBack()
 
 	const [modalOpen, setModalOpen] = useState(false)
+	const [filter, setFilter] = useState('income')
+	const [deletingId, setDeletingId] = useState(null)
+
+	const [deleteCategoryApi] = useDeleteCategoryMutation()
+
 	useEscape(() => {
-		if (modalOpen) closeModal()
+		if (modalOpen) setModalOpen(false)
 	})
 
-	const openCreate = () => setModalOpen(true)
-	const closeModal = () => setModalOpen(false)
-
-	const [deleteCategoryApi, { isLoading, isSuccess }] =
-		useDeleteCategoryMutation()
-	const [deletingId, setDeletingId] = useState(null)
+	const filteredCategories = useMemo(() => {
+		if (!allCategories) return []
+		return allCategories.filter(cat => cat.type === filter)
+	}, [allCategories, filter])
 
 	const handleDelete = async id => {
 		if (!id) return
 		setDeletingId(id)
 		try {
 			await deleteCategoryApi(id).unwrap()
-		} catch (err) {
-			console.error('Delete failed', err)
 		} finally {
 			setDeletingId(null)
 		}
@@ -49,10 +50,13 @@ export function Category() {
 					</button>
 					<h2>Categories</h2>
 				</div>
+
+				<FilterToggle filterState={filter} onChange={setFilter} />
+
 				<div className='categories-grid'>
-					{allCategories?.map(cat => (
+					{filteredCategories.map(cat => (
 						<CategoryCard
-							key={cat._id}
+							key={cat._id || cat.id}
 							cat={cat}
 							onDelete={handleDelete}
 							deleteLoading={deletingId === (cat._id || cat.id)}
@@ -60,12 +64,18 @@ export function Category() {
 					))}
 				</div>
 
-				<CustomCategoryModal isOpen={modalOpen} onClose={closeModal} />
+				<CustomCategoryModal
+					isOpen={modalOpen}
+					onClose={() => setModalOpen(false)}
+				/>
 			</div>
 
 			{!modalOpen && (
 				<div className='fixed-add-btn'>
-					<button className='add-category-btn' onClick={openCreate}>
+					<button
+						className='add-category-btn'
+						onClick={() => setModalOpen(true)}
+					>
 						Add Category
 					</button>
 				</div>

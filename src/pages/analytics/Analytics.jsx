@@ -1,6 +1,6 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { ResponsivePie } from '@nivo/pie'
-import { Select } from '@ui/'
+import { FilterToggle, Select } from '@ui/'
 import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,
@@ -10,12 +10,14 @@ import {
 import { ChevronLeft } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import './Analytics.css'
 
 export function Analytics() {
 	const navigate = useNavigate()
 	const { transactions, categories, loadingTransactions } = useDashboardLogic()
 	const [filter, setFilter] = useState('full')
+	const [typeFilter, setTypeFilter] = useState('income')
 	const [textColor, setTextColor] = useState('#ffffff')
 	const [bgColor, setBgColor] = useState('#1e1e1e')
 
@@ -45,6 +47,8 @@ export function Analytics() {
 					<h2>Monitoring</h2>
 				</div>
 
+				<FilterToggle filterState={typeFilter} onChange={setTypeFilter} />
+
 				{filteredData.length > 0 ? (
 					<>
 						<div className='total-expense'>
@@ -57,25 +61,27 @@ export function Analytics() {
 							<div style={{ height: 450, width: '100%' }}>
 								<ResponsivePie
 									data={filteredData}
-									margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-									innerRadius={0.6}
-									padAngle={1}
-									cornerRadius={4}
-									activeOuterRadiusOffset={10}
+									margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+									innerRadius={0.7}
+									padAngle={2}
+									cornerRadius={5}
+									activeOuterRadiusOffset={3}
 									borderWidth={2}
-									borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
-									colors={{ scheme: 'set2' }}
-									arcLinkLabelsSkipAngle={10}
-									arcLinkLabelsTextColor={textColor}
-									arcLinkLabelsThickness={2}
-									arcLinkLabelsColor={{ from: 'color' }}
-									arcLabelsTextColor={textColor}
-									theme={{
-										tooltip: {
-											container: { background: bgColor, color: textColor },
-										},
-										labels: { text: { fill: textColor } },
-									}}
+									borderColor={{ from: 'color', modifiers: [['darker', 1]] }}
+									colors={({ data }) => data.color}
+									enableArcLabels={false}
+									enableArcLinkLabels={false}
+									tooltip={() => null}
+									layers={[
+										'arcs',
+										props => (
+											<CenterMetric
+												centerX={props.centerX}
+												centerY={props.centerY}
+												value={`${formatAmount(total)} UZS`}
+											/>
+										),
+									]}
 								/>
 							</div>
 							<Select

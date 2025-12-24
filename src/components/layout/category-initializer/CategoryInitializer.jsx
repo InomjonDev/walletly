@@ -22,6 +22,7 @@ export function CategoryInitializer() {
 							cat_id: cat.cat_id,
 							type: cat.type,
 							cat_icon: cat.cat_icon,
+							color: cat.color,
 						}).unwrap()
 					} catch (err) {
 						console.error('Failed to add category:', cat, err)

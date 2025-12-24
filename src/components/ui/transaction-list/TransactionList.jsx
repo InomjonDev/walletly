@@ -1,13 +1,7 @@
-import { Link } from 'react-router-dom'
 import { TransactionListItem } from '../transaction-list-item/TransactionListItem'
 import './TransactionList.css'
 
-export function TransactionList({
-	transactions,
-	categories,
-	filter,
-	setFilter,
-}) {
+export function TransactionList({ transactions, categories }) {
 	const sortedTransactions = (transactions || [])
 		.slice()
 		.sort(
@@ -20,23 +14,6 @@ export function TransactionList({
 
 	return (
 		<div className='transaction-list'>
-			<h2>Latest Transactions</h2>
-
-			<div className='filter-toggle'>
-				<button
-					className={`toggle-btn ${filter === 'income' ? 'active' : ''}`}
-					onClick={() => setFilter('income')}
-				>
-					Income
-				</button>
-				<button
-					className={`toggle-btn ${filter === 'expense' ? 'active' : ''}`}
-					onClick={() => setFilter('expense')}
-				>
-					Expense
-				</button>
-			</div>
-
 			{visibleTransactions.length === 0 ? (
 				<p className='no-transactions'>No transactions yet</p>
 			) : (
@@ -51,16 +28,16 @@ export function TransactionList({
 						))}
 					</div>
 
-					{hasMore && (
+					{/* {hasMore && (
 						<div className='see-more-link-wrapper'>
 							<Link
 								to='/transactions'
-								className='rounded-md transaction-see-more-link'
+								className='rounded-md transaction-see-more-link text-sm'
 							>
 								See more…
 							</Link>
 						</div>
-					)}
+					)} */}
 				</>
 			)}
 		</div>

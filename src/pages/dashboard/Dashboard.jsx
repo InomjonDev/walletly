@@ -1,10 +1,16 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
-import { AddTransactionForm } from '@layout/'
+import { AddTransactionForm, DashboardChartBlock } from '@layout/'
 import { CreditCardSkeleton } from '@skeletons/'
-import { CreditCard, Modal, TransactionList } from '@ui/'
-import { ArrowDownLeft, ArrowUpRight, ChartPie, Settings } from 'lucide-react'
-import { useState } from 'react'
+import { CreditCard, Modal } from '@ui/'
+import {
+	ArrowDownLeft,
+	ArrowUpRight,
+	ChartColumnBig,
+	EllipsisVertical,
+} from 'lucide-react'
+import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+
 import './Dashboard.css'
 
 export function Dashboard() {
@@ -20,7 +26,8 @@ export function Dashboard() {
 	} = useDashboardLogic()
 
 	const [formType, setFormType] = useState('income')
-	const [filter, setFilter] = useState('income')
+	const [textColor] = useState('#ffffff')
+	const [bgColor] = useState('#1e1e1e')
 
 	const openModal = type => {
 		setFormType(type)
@@ -31,7 +38,32 @@ export function Dashboard() {
 		setFormVisible(false)
 	}
 
-	const filteredTransactions = transactions.filter(t => t.type === filter)
+	const incomeStats = useMemo(() => {
+		const incomeTx = transactions.filter(t => t.type === 'income')
+		const incomeCat = categories.filter(cat => cat.type === 'income')
+
+		const map = {}
+
+		for (const t of incomeTx) {
+			if (!map[t.category]) {
+				const cat = incomeCat.find(c => c._id === t.category)
+
+				map[t.category] = {
+					id: cat?._id,
+					label: cat?.name,
+					value: 0,
+					color: cat?.color,
+				}
+			}
+			map[t.category].value += t.amount
+		}
+
+		const data = Object.values(map)
+
+		const topTwo = [...data].sort((a, b) => b.value - a.value).slice(0, 2)
+
+		return { chartData: data, topTwo }
+	}, [transactions, categories])
 
 	return (
 		<div className='dashboard-container'>
@@ -39,7 +71,7 @@ export function Dashboard() {
 				<h2 className='header-text'>Hello, Inomjon</h2>
 				<div className='header-right'>
 					<Link to='/settings' className='back-btn'>
-						<Settings size={20} />
+						<EllipsisVertical size={20} />
 					</Link>
 				</div>
 			</div>
@@ -63,18 +95,16 @@ export function Dashboard() {
 				</button>
 
 				{transactions.length > 0 && (
-					<button className='chart-btn' onClick={() => navigate('/analytics')}>
-						<ChartPie />
+					<button
+						className='chart-btn'
+						onClick={() => navigate('/transactions')}
+					>
+						<ChartColumnBig />
 					</button>
 				)}
 			</div>
 
-			<TransactionList
-				transactions={filteredTransactions}
-				categories={categories}
-				filter={filter}
-				setFilter={setFilter}
-			/>
+			{transactions.length > 0 && <DashboardChartBlock data={incomeStats} />}
 		</div>
 	)
 }

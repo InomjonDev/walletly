@@ -1,5 +1,7 @@
 .credit-card--skeleton {
 	overflow: hidden;
+	animation: var(--animation-pulse);
+	background-color: var(--skeleton-background);
 }
 
 .skeleton-box {
@@ -22,7 +24,7 @@
 	animation: var(--animation-pulse);
 	border-radius: 16px;
 	margin: 0 auto;
-	width: 220px;
+	width: 270px;
 	height: 48px;
 	background-color: var(--skeleton-background);
 }

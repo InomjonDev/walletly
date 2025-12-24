@@ -13,48 +13,7 @@
 	font-weight: 700;
 	color: var(--color-text-main);
 	text-align: left;
-	margin-bottom: 8px;
-}
-
-/* ===== COMBINED FILTER TOGGLE ===== */
-.filter-toggle {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: var(--color-bg-card);
-	border: 2px solid var(--color-border);
-	border-radius: 30px;
-	overflow: hidden;
-	/* width: fit-content; */
-	width: 100%;
-	margin: 0 auto 24px;
-}
-
-.toggle-btn {
-	padding: 14px 32px;
-	border: none;
-	background: transparent;
-	color: var(--color-text-main);
-	cursor: pointer;
-	font-weight: 600;
-	font-size: 15px;
-	transition: background 0.3s ease, color 0.3s ease;
-	width: 100%;
-}
-
-.toggle-btn:first-child {
-	border-right: 1px solid #333;
-}
-
-.toggle-btn.active {
-	background: var(--color-accent-black);
-	color: #fff;
-}
-
-.no-transactions {
-	text-align: center;
-	color: #777;
-	font-size: 16px;
+	/* margin-bottom: 8px; */
 }
 
 /* ===== TRANSACTION ITEMS ===== */

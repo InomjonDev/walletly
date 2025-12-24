@@ -13,14 +13,28 @@ export const SYSTEM_CATEGORIES = [
 		name: 'Food',
 		type: 'expense',
 		cat_icon: 'UtensilsCrossed',
+		color: '#e67e22',
 	},
-	{ cat_id: 'transport', name: 'Transport', type: 'expense', cat_icon: 'Car' },
-	{ cat_id: 'salary', name: 'Salary', type: 'income', cat_icon: 'CreditCard' },
+	{
+		cat_id: 'transport',
+		name: 'Transport',
+		type: 'expense',
+		cat_icon: 'Car',
+		color: '#3498db',
+	},
+	{
+		cat_id: 'salary',
+		name: 'Salary',
+		type: 'income',
+		cat_icon: 'CreditCard',
+		color: '#9b59b6',
+	},
 	{
 		cat_id: 'shopping',
 		name: 'Shopping',
 		type: 'expense',
 		cat_icon: 'ShoppingCart',
+		color: '#27ae60',
 	},
 ]
 

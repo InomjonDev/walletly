@@ -1,7 +1,7 @@
 export function formatAmount(amount, locale = 'fr-FR') {
 	if (amount == null) return ''
 	try {
-		return Number(amount).toLocaleString(locale).replace(/,/g, ' ')
+		return Number(amount).toLocaleString(locale).replace(/,/g, '  ')
 	} catch (e) {
 		return String(amount)
 	}

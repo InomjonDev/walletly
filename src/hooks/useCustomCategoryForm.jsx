@@ -4,6 +4,7 @@ import {
 	buildCategoryPayload,
 	isValidCategoryName,
 } from '@utils/category.utils'
+import { getUniqueRandomIconColor } from '@utils/iconColors.utils'
 import { useContext, useState } from 'react'
 
 export default function useCustomCategoryForm({ onClose } = {}) {
@@ -13,14 +14,16 @@ export default function useCustomCategoryForm({ onClose } = {}) {
 	const [loading, setLoading] = useState(false)
 	const [name, setName] = useState('')
 	const [type, setType] = useState('expense')
-	const [catIcon, setCatIcon] = useState('CreditCard')
+	const [catIcon, setCatIcon] = useState(null)
 	const [iconSearch, setIconSearch] = useState('')
+	const [color, setColor] = useState('')
 
 	const reset = () => {
 		setName('')
 		setType('expense')
-		setCatIcon('CreditCard')
+		setCatIcon(null)
 		setIconSearch('')
+		setColor(null)
 		setLoading(false)
 	}
 
@@ -33,9 +36,17 @@ export default function useCustomCategoryForm({ onClose } = {}) {
 			return
 		}
 
+		const color = getUniqueRandomIconColor()
+
 		setLoading(true)
 		try {
-			const payload = buildCategoryPayload({ name, type, catIcon })
+			const payload = buildCategoryPayload({
+				name,
+				type,
+				catIcon,
+				color,
+			})
+
 			await addCategory({ userId: currentUser.uid, ...payload }).unwrap()
 			onClose?.()
 			reset()
@@ -54,6 +65,8 @@ export default function useCustomCategoryForm({ onClose } = {}) {
 		setType,
 		catIcon,
 		setCatIcon,
+		color,
+		setColor,
 		iconSearch,
 		setIconSearch,
 		handleSave,

@@ -4,8 +4,8 @@ export const api = createApi({
 	reducerPath: 'api',
 	tagTypes: ['Transaction', 'Category'],
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:4400/api',
-		// baseUrl: 'https://walletly-server.onrender.com/api',
+		// baseUrl: 'http://localhost:4400/api',
+		baseUrl: 'https://walletly-server.onrender.com/api',
 		prepareHeaders: headers => {
 			const token = localStorage.getItem('token')
 			if (token) {
