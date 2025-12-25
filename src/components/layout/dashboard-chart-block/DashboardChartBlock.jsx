@@ -9,11 +9,18 @@ export function DashboardChartBlock({ data }) {
 	return (
 		<div className='dashboard-block'>
 			<div className='dashboard-block-content'>
-				<Link to={'/analytics'}>
-					<ArrowUpRight />
+				<Link to={'/analytics'} className='dashboard-block-content-link'>
+					<ArrowUpRight size={20} />
 				</Link>
 				<div className='dashboard-block-chart'>
-					<PieChart data={data} metrics={true} />
+					<PieChart
+						data={data.chartData}
+						metrics={true}
+						fontSize='12px'
+						height='100%'
+						width='100%'
+						top={20}
+					/>
 				</div>
 
 				<div className='dashboard-block-analytics'>

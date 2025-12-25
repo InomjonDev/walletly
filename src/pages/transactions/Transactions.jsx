@@ -67,6 +67,24 @@ export function Transactions() {
 	const totalExpenses = calculateTotalExpenses(filteredTransactions)
 	const totalIncome = calculateTotalIncome(filteredTransactions)
 
+	const groupedByDate = filteredTransactions.reduce((acc, t) => {
+		const date = new Date(t.createdAt)
+		const dateKey = date.toLocaleDateString('en-US', {
+			day: '2-digit',
+			month: 'long',
+			year: 'numeric',
+		})
+
+		if (!acc[dateKey]) acc[dateKey] = []
+		acc[dateKey].push(t)
+
+		return acc
+	}, {})
+
+	const sortedDates = Object.keys(groupedByDate).sort(
+		(a, b) => new Date(b) - new Date(a)
+	)
+
 	return (
 		<div className={`transactions-page ${theme}`}>
 			<div className='container'>
@@ -74,6 +92,7 @@ export function Transactions() {
 					<GoBackButton />
 					<h2>Transactions</h2>
 				</div>
+
 				<div className='transactions-content'>
 					<div className='transactions-actions'>
 						<Input
@@ -119,14 +138,19 @@ export function Transactions() {
 					)}
 
 					<div className='transactions-list'>
-						{filteredTransactions.map(t => (
-							<TransactionListItem
-								key={t._id}
-								transaction={t}
-								categories={categories}
-							/>
+						{sortedDates.map(date => (
+							<div key={date} className='transactions-day-group'>
+								<div className='transactions-day-title'>{date}</div>
+
+								{groupedByDate[date].map(t => (
+									<TransactionListItem
+										key={t._id}
+										transaction={t}
+										categories={categories}
+									/>
+								))}
+							</div>
 						))}
-						<span></span>
 					</div>
 				</div>
 			</div>

@@ -30,25 +30,34 @@ export function filterTransactionsByPeriod(transactions = [], filter = 'full') {
 
 export function aggregateExpensesByCategory(
 	transactions = [],
-	categories = []
+	categories = [],
+	type
 ) {
 	const categoryMap = {}
 	let total = 0
 
 	transactions.forEach(item => {
-		if (item.type === 'income') return
+		if (item.type !== type) return
 		const categoryObj = categories.find(c => c._id === item.category)
 		const categoryName = categoryObj?.name || 'Other'
 		const amount = Number(item.amount) || 0
-		categoryMap[categoryName] = (categoryMap[categoryName] || 0) + amount
+		const categoryColor = categoryObj?.color || null
+
+		if (!categoryMap[categoryName]) {
+			categoryMap[categoryName] = { value: 0, color: categoryColor }
+		}
+
+		categoryMap[categoryName].value += amount
 		total += amount
 	})
 
-	const data = Object.entries(categoryMap).map(([name, value]) => ({
+	const data = Object.entries(categoryMap).map(([name, obj]) => ({
 		id: name,
 		label: name,
-		value,
+		value: obj.value,
+		color: obj.color,
 	}))
+
 	return { data, total }
 }
 

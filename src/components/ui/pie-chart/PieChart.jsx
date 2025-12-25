@@ -2,7 +2,7 @@ import { ResponsivePie } from '@nivo/pie'
 import { formatAmount } from '@utils/format.utils'
 import './PieChart.css'
 
-export function PieChart({ data, metrics }) {
+export function PieChart({ data, metrics, fontSize, height, width, top }) {
 	const CenterMetric = ({ centerX, centerY, value }) => (
 		<text
 			x={centerX}
@@ -11,17 +11,17 @@ export function PieChart({ data, metrics }) {
 			dominantBaseline='central'
 			className='dashboard-block-chart-text'
 			fill='var(--color-text-main)'
+			fontSize={fontSize}
 		>
 			{value}
 		</text>
 	)
 
-	const total = data.chartData.reduce((sum, item) => sum + item.value, 0)
 	return (
-		<div style={{ height: '100%', width: '100%' }}>
+		<div style={{ height, width }}>
 			<ResponsivePie
-				data={data.chartData}
-				margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+				data={data}
+				margin={{ top, right: 10, bottom: 10, left: 10 }}
 				innerRadius={0.7}
 				padAngle={2}
 				cornerRadius={5}
@@ -32,16 +32,22 @@ export function PieChart({ data, metrics }) {
 				enableArcLabels={false}
 				enableArcLinkLabels={false}
 				tooltip={() => null}
-				layers={[
-					'arcs',
-					props => (
-						<CenterMetric
-							centerX={props.centerX}
-							centerY={props.centerY}
-							value={`${formatAmount(total)} UZS`}
-						/>
-					),
-				]}
+				layers={
+					metrics
+						? [
+								'arcs',
+								props => (
+									<CenterMetric
+										centerX={props.centerX}
+										centerY={props.centerY}
+										value={`${formatAmount(
+											data.reduce((sum, item) => sum + item.value, 0)
+										)} UZS`}
+									/>
+								),
+						  ]
+						: ['arcs']
+				}
 			/>
 		</div>
 	)

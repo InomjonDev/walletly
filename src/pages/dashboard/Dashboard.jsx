@@ -8,12 +8,14 @@ import {
 	ChartColumnBig,
 	EllipsisVertical,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { AuthContext } from '../../context/AuthContext'
 import './Dashboard.css'
 
 export function Dashboard() {
+	const { currentUser } = useContext(AuthContext)
 	const navigate = useNavigate()
 	const {
 		transactions,
@@ -26,8 +28,6 @@ export function Dashboard() {
 	} = useDashboardLogic()
 
 	const [formType, setFormType] = useState('income')
-	const [textColor] = useState('#ffffff')
-	const [bgColor] = useState('#1e1e1e')
 
 	const openModal = type => {
 		setFormType(type)
@@ -68,7 +68,7 @@ export function Dashboard() {
 	return (
 		<div className='dashboard-container'>
 			<div className='dashboard-header'>
-				<h2 className='header-text'>Hello, Inomjon</h2>
+				<h2 className='header-text'>Hello, {currentUser.displayName}</h2>
 				<div className='header-right'>
 					<Link to='/settings' className='back-btn'>
 						<EllipsisVertical size={20} />

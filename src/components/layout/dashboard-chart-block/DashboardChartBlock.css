@@ -1,12 +1,10 @@
 .dashboard-block {
 	background: var(--color-bg-card);
 	width: 100%;
-	min-width: 0;
+	max-width: 650px;
 	min-height: 260px;
 	box-shadow: var(--shadow-card);
 	padding: 14px 16px;
-	display: flex;
-	flex-direction: column;
 	border-radius: 24px;
 }
 
@@ -16,15 +14,24 @@
 	display: flex;
 	align-items: stretch;
 	gap: 12px;
+	position: relative;
+}
+
+.dashboard-block-content-link {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-bottom: 100px;
+	color: var(--color-label);
 }
 
 .dashboard-block-chart {
 	width: 60%;
-	min-height: 200px;
+	/* height: 100%; */
+	min-height: 220px;
 }
 
 .dashboard-block-chart-text {
-	font-size: 12px;
 	font-weight: 500;
 	color: #fff;
 }
@@ -40,6 +47,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	margin-top: 10px;
 }
 
 .dashboard-block-analytics-item {
@@ -99,10 +107,5 @@
 
 	.dashboard-block-analytics-item-label {
 		font-size: 13px;
-	}
-	.dashboard-block-chart-text {
-		font-size: 8px;
-		/* color: var(--color-text-title); */
-		color: #fff;
 	}
 }

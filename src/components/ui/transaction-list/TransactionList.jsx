@@ -10,7 +10,6 @@ export function TransactionList({ transactions, categories }) {
 		)
 
 	const visibleTransactions = sortedTransactions.slice(0, 3)
-	const hasMore = sortedTransactions.length > 3
 
 	return (
 		<div className='transaction-list'>
@@ -27,17 +26,6 @@ export function TransactionList({ transactions, categories }) {
 							/>
 						))}
 					</div>
-
-					{/* {hasMore && (
-						<div className='see-more-link-wrapper'>
-							<Link
-								to='/transactions'
-								className='rounded-md transaction-see-more-link text-sm'
-							>
-								See more…
-							</Link>
-						</div>
-					)} */}
 				</>
 			)}
 		</div>

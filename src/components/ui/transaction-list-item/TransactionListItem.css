@@ -10,6 +10,7 @@
 	overflow: hidden;
 	cursor: pointer;
 	height: 72px;
+	margin-bottom: 20px;
 }
 
 .transaction-item:hover {
