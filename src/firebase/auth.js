@@ -7,7 +7,6 @@ export const signInWithGoogle = async () => {
 	const result = await signInWithPopup(auth, provider)
 	const token = await result.user.getIdToken()
 
-	// Store token to localStorage
 	localStorage.setItem('token', token)
 
 	return {

@@ -1,7 +1,7 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { AddTransactionForm, DashboardChartBlock } from '@layout/'
 import { CreditCardSkeleton } from '@skeletons/'
-import { CreditCard, Modal } from '@ui/'
+import { Button, CreditCard, Modal } from '@ui/'
 import {
 	ArrowDownLeft,
 	ArrowUpRight,
@@ -87,20 +87,20 @@ export function Dashboard() {
 			)}
 
 			<div className='action-buttons'>
-				<button className='income-btn' onClick={() => openModal('income')}>
+				<Button className={'income-btn'} onClick={() => openModal('income')}>
 					<ArrowUpRight />
-				</button>
-				<button className='expense-btn' onClick={() => openModal('expense')}>
+				</Button>
+				<Button className={'expense-btn'} onClick={() => openModal('expense')}>
 					<ArrowDownLeft />
-				</button>
+				</Button>
 
 				{transactions.length > 0 && (
-					<button
+					<Button
 						className='chart-btn'
 						onClick={() => navigate('/transactions')}
 					>
 						<ChartColumnBig />
-					</button>
+					</Button>
 				)}
 			</div>
 

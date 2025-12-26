@@ -2,13 +2,17 @@ import { PieChart } from '@ui/'
 import { withAlpha } from '@utils/color.utils'
 import { formatAmount } from '@utils/format.utils'
 import { ArrowUpRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './DashboardChartBlock.css'
 
 export function DashboardChartBlock({ data }) {
+	const navigate = useNavigate()
 	return (
 		<div className='dashboard-block'>
-			<div className='dashboard-block-content'>
+			<div
+				className='dashboard-block-content'
+				onClick={() => navigate('/analytics')}
+			>
 				<Link to={'/analytics'} className='dashboard-block-content-link'>
 					<ArrowUpRight size={20} />
 				</Link>

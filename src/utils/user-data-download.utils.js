@@ -11,7 +11,6 @@ export const downloadTransactionsExcel = transactions => {
 		t.notes || '',
 	])
 
-	// Combine headers + rows using tab separators
 	const content = [headers, ...rows].map(row => row.join('\t')).join('\n')
 
 	const blob = new Blob([content], {

@@ -5,6 +5,7 @@ import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,
 } from '@utils/chart.utils'
+import { withAlpha } from '@utils/color.utils'
 import { ChevronLeft } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -29,6 +30,8 @@ export function Analytics() {
 		return { filteredData: data, totalAmount: total }
 	}, [transactions, categories, filter, typeFilter])
 
+	console.log(filteredData)
+
 	return (
 		<div className='chart-page-container'>
 			<div className='container'>
@@ -38,9 +41,14 @@ export function Analytics() {
 					</button>
 					<h2>Monitoring</h2>
 				</div>
-
-				<FilterToggle filterState={typeFilter} onChange={setTypeFilter} />
-
+				<div className='chart-page-actions'>
+					<Select
+						value={filter}
+						onChange={setFilter}
+						options={ANALYTICS_FILTER_VALUES}
+					/>
+					<FilterToggle filterState={typeFilter} onChange={setTypeFilter} />
+				</div>
 				{filteredData.length > 0 ? (
 					<>
 						<div className='chart-page-chart'>
@@ -55,17 +63,23 @@ export function Analytics() {
 								/>
 							</div>
 						</div>
+						<div className='chart-page-spent-categories'>
+							{filteredData.map(item => (
+								<div
+									key={item.id}
+									className='spent-categories-item'
+									style={{ backgroundColor: withAlpha(item.color, 0.5) }}
+								>
+									{item.label}:<span> {item.value} UZS</span>
+								</div>
+							))}
+						</div>
 					</>
 				) : (
 					<p className='no-data' style={{ marginBottom: '20px' }}>
 						No category data available
 					</p>
 				)}
-				<Select
-					value={filter}
-					onChange={setFilter}
-					options={ANALYTICS_FILTER_VALUES}
-				/>
 			</div>
 		</div>
 	)

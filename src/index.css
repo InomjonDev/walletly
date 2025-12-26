@@ -28,6 +28,8 @@
 	--color-button-bg: #151515;
 	--color-btn-text: #d4d4d4;
 	--color-button-bg-hover: #1c1c1c;
+	--color-button-bg-white: #e5e5e5;
+	--color-button-text-white: #171717;
 
 	/* Custom input and select */
 	--color-label: #fafafa;
@@ -78,6 +80,8 @@
 	--color-button-bg: transparent;
 	--color-btn-text: #262626;
 	--color-button-bg-hover: #f5f5f5;
+	--color-button-bg-white: ##171717;
+	--color-button-text-white: #fafafa;
 
 	/* Custom input and select */
 	--color-label: #0a0a0a;
@@ -136,19 +140,17 @@ html,
 body {
 	height: 100%;
 	width: 100%;
-	background-color: var(--color-bg);
 }
 
 body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Inter', sans-serif;
-	background: var(--color-bg-dark);
 	color: var(--color-text);
 	transition: all 0.3s ease;
 	scrollbar-width: thin;
 	scrollbar-color: #2a2a2a #0f0f0f;
-
+	background-color: var(--color-bg);
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -161,21 +163,6 @@ body {
 	max-width: 960px;
 	margin: 0 auto;
 	padding: 1.5rem;
-}
-
-.btn {
-	padding: 0.6rem 1.2rem;
-	background-color: var(--color-primary);
-	color: white;
-	border: none;
-	border-radius: 0.375rem;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.2s ease;
-}
-
-.btn:hover {
-	background-color: var(--color-primary-hover);
 }
 
 .card {

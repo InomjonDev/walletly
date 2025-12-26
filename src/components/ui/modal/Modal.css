@@ -11,11 +11,13 @@
 .modal-overlay.show {
 	background: rgba(0, 0, 0, 0.35);
 }
+
 .modal-content {
 	transform: translateY(-10px) scale(0.98);
 	opacity: 0;
 	transition: transform 0.35s ease, opacity 0.35s ease;
 }
+
 .modal-content.animate {
 	transform: translateY(0) scale(1);
 	opacity: 1;

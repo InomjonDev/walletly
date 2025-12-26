@@ -1,5 +1,5 @@
 import useCustomCategoryForm from '@hooks/useCustomCategoryForm'
-import { IconPicker, Input, Select } from '@ui/'
+import { Button, IconPicker, Input, Select } from '@ui/'
 import * as LucideIcons from 'lucide-react'
 import './CustomCategoryModal.css'
 
@@ -25,9 +25,9 @@ export function CustomCategoryModal({ isOpen, onClose }) {
 			<div className='category-modal' onClick={e => e.stopPropagation()}>
 				<div className='category-modal-title'>
 					Add Category
-					<button className='category-modal-close-btn' onClick={onClose}>
+					<Button className='category-modal-close-btn' onClick={onClose}>
 						<LucideIcons.X />
-					</button>
+					</Button>
 				</div>
 
 				<Input
@@ -53,17 +53,17 @@ export function CustomCategoryModal({ isOpen, onClose }) {
 				/>
 
 				<div className='category-modal-actions'>
-					<button onClick={handleSave} disabled={loading}>
+					<Button onClick={handleSave} disabled={loading}>
 						{loading ? 'Saving...' : 'Save'}
-					</button>
-					<button
+					</Button>
+					<Button
 						onClick={() => {
 							reset()
 							onClose()
 						}}
 					>
 						Cancel
-					</button>
+					</Button>
 				</div>
 			</div>
 		</div>

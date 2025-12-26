@@ -1,3 +1,4 @@
+export { Button } from './button/Button'
 export { CategoryCard } from './category-card/CategoryCard'
 export { Checkbox } from './checkbox/Checkbox'
 export { CreditCard } from './credit-card/CreditCard'

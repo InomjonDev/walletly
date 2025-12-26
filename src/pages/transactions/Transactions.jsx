@@ -12,7 +12,6 @@ import { findCategory, resolveCategoryName } from '@utils/categories.utils'
 import {
 	calculateTotalExpenses,
 	calculateTotalIncome,
-	formatTotalAmount,
 } from '@utils/chart.utils'
 import { useEffect, useState } from 'react'
 
@@ -24,7 +23,7 @@ export function Transactions() {
 	const [selectedCategory, setSelectedCategory] = useState('')
 	const [searchTerm, setSearchTerm] = useState('')
 	const [showIncome, setShowIncome] = useState(false)
-	const [showExpense, setShowExpense] = useState(false)
+	const [showExpense, setShowExpense] = useState(true)
 
 	useEffect(() => {
 		setSelectedCategory('')
@@ -109,14 +108,6 @@ export function Transactions() {
 						/>
 						<div className='transactions-actions-checkboxes'>
 							<Checkbox
-								label='Income'
-								value={showIncome}
-								onChange={value => {
-									setShowIncome(value)
-									if (value) setShowExpense(false)
-								}}
-							/>
-							<Checkbox
 								label='Expense'
 								value={showExpense}
 								onChange={value => {
@@ -124,10 +115,18 @@ export function Transactions() {
 									if (value) setShowIncome(false)
 								}}
 							/>
+							<Checkbox
+								label='Income'
+								value={showIncome}
+								onChange={value => {
+									setShowIncome(value)
+									if (value) setShowExpense(false)
+								}}
+							/>
 						</div>
 					</div>
-
-					{(showIncome || showExpense) && filteredTransactions.length > 0 && (
+					{/* Total amount display is currently commented out */}
+					{/* {(showIncome || showExpense) && filteredTransactions.length > 0 && (
 						<div className='transactions-total'>
 							Total {showIncome ? 'Income' : 'Expenses'}:{' '}
 							<span className={`amount ${showIncome ? 'income' : 'expense'}`}>
@@ -135,8 +134,7 @@ export function Transactions() {
 								UZS
 							</span>
 						</div>
-					)}
-
+					)} */}
 					<div className='transactions-list'>
 						{sortedDates.map(date => (
 							<div key={date} className='transactions-day-group'>

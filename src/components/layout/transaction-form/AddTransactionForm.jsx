@@ -1,6 +1,6 @@
 import useTransactionForm from '@hooks/useTransactionForm'
 import { quickAmounts } from '@shared/transaction-form.shared'
-import { Input, Select } from '@ui/'
+import { Button, Input, Select } from '@ui/'
 import { X } from 'lucide-react'
 import './AddTransactionForm.css'
 
@@ -27,8 +27,7 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 		<form className='transaction-form' onSubmit={handleSubmit}>
 			<div className='transaction-form-header'>
 				<h3>{type === 'expense' ? 'Expense' : 'Income'}</h3>
-				<button
-					type='button'
+				<Button
 					className='transaction-form-close-btn'
 					onClick={() => {
 						resetForm()
@@ -36,7 +35,7 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 					}}
 				>
 					<X size={20} />
-				</button>
+				</Button>
 			</div>
 
 			<div className='input-group'>
@@ -49,13 +48,13 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 				/>
 				<div className='quick-amounts'>
 					{quickAmounts.map(val => (
-						<button
+						<Button
 							type='button'
 							key={val}
 							onClick={() => setAmount(String(val))}
 						>
 							{val.toLocaleString('en-US')} UZS
-						</button>
+						</Button>
 					))}
 				</div>
 			</div>
@@ -93,13 +92,13 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 				/>
 			</div>
 
-			<button
+			<Button
 				className='transaction-form-submit'
 				type='submit'
 				disabled={isLoading}
 			>
 				{isLoading ? 'Adding...' : 'Add Transaction'}
-			</button>
+			</Button>
 		</form>
 	)
 }
