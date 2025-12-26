@@ -8,22 +8,22 @@
 
 .toggle-btn {
 	padding: 10px 20px;
-	border: none;
+	/* border: none;
 	color: var(--color-text-main);
 	cursor: pointer;
 	font-weight: 600;
-	font-size: 15px;
+	font-size: 15px; */
 	width: 100%;
 	border-radius: 7px;
-	background: transparent;
-	box-shadow: var(--shadow-input-select-border);
+	/* background: transparent;
+	box-shadow: var(--shadow-input-select-border); */
 	transition: background 0.3s ease, color 0.3s ease;
 }
 
-.toggle-btn.active {
+/* .toggle-btn.active {
 	background: var(--color-accent-black);
 	color: #fff;
-}
+} */
 
 .no-transactions {
 	text-align: center;

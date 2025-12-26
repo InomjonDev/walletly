@@ -125,8 +125,11 @@
 		animation: modalSlideUp 220ms cubic-bezier(0.22, 0.98, 0.3, 1) both;
 	}
 
-	/* .quick-amounts button {
-		font-size: 12px;
-		padding: 10px 1px;
-	} */
+	.quick-amounts {
+		flex-wrap: wrap;
+		height: auto;
+	}
+	.quick-amounts button {
+		flex: 1 1 30%;
+	}
 }

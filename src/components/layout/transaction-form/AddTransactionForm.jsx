@@ -1,6 +1,6 @@
 import useTransactionForm from '@hooks/useTransactionForm'
 import { quickAmounts } from '@shared/transaction-form.shared'
-import { Button, Input, Select } from '@ui/'
+import { Button, Calendar, Input, Select } from '@ui/'
 import { X } from 'lucide-react'
 import './AddTransactionForm.css'
 
@@ -74,13 +74,8 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 			</div>
 
 			<div className='input-group'>
-				<Input
-					type='date'
-					label='Date'
-					value={date}
-					onChange={setDate}
-					required={true}
-				/>
+				<label className='input-label'>Date</label>
+				<Calendar value={date} onChange={setDate} />
 			</div>
 
 			<div className='input-group'>

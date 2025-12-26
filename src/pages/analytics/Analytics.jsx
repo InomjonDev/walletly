@@ -1,6 +1,6 @@
 import { useDashboardLogic } from '@hooks/useDashboardLogic'
 import { ANALYTICS_FILTER_VALUES } from '@shared/select-values.shared'
-import { FilterToggle, PieChart, Select } from '@ui/'
+import { Button, Calendar, FilterToggle, PieChart } from '@ui/'
 import {
 	aggregateExpensesByCategory,
 	filterTransactionsByPeriod,
@@ -30,8 +30,6 @@ export function Analytics() {
 		return { filteredData: data, totalAmount: total }
 	}, [transactions, categories, filter, typeFilter])
 
-	console.log(filteredData)
-
 	return (
 		<div className='chart-page-container'>
 			<div className='container'>
@@ -41,14 +39,28 @@ export function Analytics() {
 					</button>
 					<h2>Monitoring</h2>
 				</div>
+
 				<div className='chart-page-actions'>
-					<Select
+					{/* <Select
 						value={filter}
 						onChange={setFilter}
 						options={ANALYTICS_FILTER_VALUES}
-					/>
+					/> */}
+					<div className='chart-page-actions-btn-group'>
+						{ANALYTICS_FILTER_VALUES?.map(o => (
+							<Button
+								key={o.value}
+								onClick={() => setFilter(o.value)}
+								className={o.value === filter ? 'active' : ''}
+							>
+								{o.label}
+							</Button>
+						))}
+						<Calendar></Calendar>
+					</div>
 					<FilterToggle filterState={typeFilter} onChange={setTypeFilter} />
 				</div>
+
 				{filteredData.length > 0 ? (
 					<>
 						<div className='chart-page-chart'>

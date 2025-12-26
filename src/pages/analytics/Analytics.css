@@ -47,6 +47,19 @@
 	gap: 12px;
 }
 
+.chart-page-actions-btn-group {
+	display: flex;
+	gap: 8px;
+	flex: 1;
+	width: 100%;
+}
+
+.chart-page-actions-btn-group button {
+	flex: 1;
+	padding: 10px;
+	border-radius: 7px;
+}
+
 .chart-page-chart {
 	width: 100%;
 	display: flex;
@@ -57,10 +70,12 @@
 .chart-page-spent-categories {
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	justify-content: flex-start;
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 12px;
+	margin-bottom: 30px;
 }
 
 .spent-categories-item {

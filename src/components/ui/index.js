@@ -1,4 +1,5 @@
 export { Button } from './button/Button'
+export { Calendar } from './calendar/Calendar'
 export { CategoryCard } from './category-card/CategoryCard'
 export { Checkbox } from './checkbox/Checkbox'
 export { CreditCard } from './credit-card/CreditCard'

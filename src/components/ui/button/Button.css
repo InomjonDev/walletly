@@ -16,6 +16,15 @@
 	background-color: var(--color-bg-input);
 }
 
+.btn:active {
+	background-color: var(--color-bg-card);
+	box-shadow: var(--shadow-input-select-border-active);
+}
+
+.btn.active {
+	background-color: var(--color-bg-input);
+}
+
 /* 
 .btn {
 	padding: 0.6rem 1.2rem;
