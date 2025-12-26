@@ -75,7 +75,7 @@ export function AddTransactionForm({ onClose, defaultType = 'income' }) {
 
 			<div className='input-group'>
 				<label className='input-label'>Date</label>
-				<Calendar value={date} onChange={setDate} />
+				<Calendar value={date} onChange={setDate} position='bottom' />
 			</div>
 
 			<div className='input-group'>
